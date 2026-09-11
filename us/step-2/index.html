@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request received, book your call</title>
+<meta name="robots" content="noindex">
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '985826230968899');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=985826230968899&ev=PageView&noscript=1" alt=""></noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-18X7J9MPBW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-18X7J9MPBW');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carme&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#0a0a08;}
+  body{font-family:'Carme',sans-serif;color:#faf9f4;-webkit-font-smoothing:antialiased;min-width:320px;}
+  *,*::before,*::after{box-sizing:border-box;}
+  ::selection{background:#FFF000;color:#0a0a08;}
+  a{color:#faf9f4;text-decoration:underline;text-decoration-color:#FFF000;text-decoration-thickness:2px;}
+  a:hover{color:#0a0a08;background:#FFF000;}
+  a,button{transition:background-color .18s ease,color .18s ease;}
+  img{max-width:100%;}
+  h1{text-wrap:balance;}
+  p{text-wrap:pretty;}
+  .marker{font-family:'Permanent Marker','Marker Felt Wide',cursive;font-weight:400;}
+  .btn{display:inline-block;background:#FFF000;color:#0a0a08;text-decoration:none;font-size:18px;font-weight:bold;padding:16px 28px;border-radius:8px;}
+  .btn:hover{background:#fff;color:#0a0a08;}
+</style>
+</head>
+<body>
+<div style="min-height:100vh;display:flex;flex-direction:column;">
+  <header style="display:flex;align-items:center;padding:14px 20px;border-bottom:1px solid #22221c;">
+    <img src="/us/img/logo.png" alt="Lemoneasy" style="height:44px;width:auto;display:block;">
+  </header>
+  <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px;">
+    <div style="max-width:560px;">
+      <p style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Request received</p>
+      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span>One more step: book your call with Roman.</h1>
+      <div style="display:flex;align-items:center;gap:16px;background:#12120e;border:1px solid #26261e;border-radius:10px;padding:16px;margin:0 0 20px;">
+        <img src="/roman-lewcke.jpg" alt="Roman Lewcke, US distributor development for Lemoneasy" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
+        <div>
+          <p style="font-size:18px;font-weight:bold;margin:0;color:#faf9f4;">Roman Lewcke</p>
+          <p style="font-size:15px;color:#8f8d82;margin:2px 0 6px;">Export Kontor, US distributor development for Lemoneasy</p>
+          <a href="https://www.linkedin.com/in/romanlbinder/" target="_blank" rel="noopener" style="font-size:15px;">See profile on LinkedIn</a>
+        </div>
+      </div>
+      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 14px;">In a 20-minute video call on Google Meet, Roman goes through your channel and your volume with you, confirms the shipping address, and releases your sample unit.</p>
+      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 32px;">You get the spec sheet and the wholesale terms on that call. This call is the last step before your unit ships. No call, no sample.</p>
+      <a id="book" href="https://meetings.hubspot.com/roman-lewcke/exportkontor-advisor" class="btn">Book your call with Roman</a>
+      <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">Pick the slot that suits you. It is a Google Meet video call: the link arrives by email and by text, and you click it at the agreed time.</p>
+    </div>
+  </main>
+  <footer style="border-top:1px solid #22221c;padding:22px 20px;">
+    <p style="font-size:13px;color:#8f8d82;margin:0;">Lemoneasy. Made in Baden-Württemberg, Germany.</p>
+  </footer>
+</div>
+<script>
+(function () {
+  var name = '';
+  try { name = new URLSearchParams(window.location.search).get('name') || sessionStorage.getItem('lemoneasy_us_name') || ''; } catch (e) {}
+  if (name) document.getElementById('greeting').textContent = 'Thanks, ' + name + '. ';
+  // The booking link is whatever /api/lp-optin returned (LEMONEASY_US_BOOKING_URL
+  // on the server). The href above is the fallback for a visitor who lands here
+  // without having submitted in this session.
+  try {
+    var url = sessionStorage.getItem('lemoneasy_us_booking');
+    if (url && /^https:\/\/meetings\.hubspot\.com\//.test(url)) document.getElementById('book').href = url;
+  } catch (e) {}
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="meetings.hubspot.com"]') : null;
+    if (!a) return;
+    try { if (window.fbq) window.fbq('track', 'Schedule'); } catch (err) {}
+    try { if (window.gtag) window.gtag('event', 'schedule_click'); } catch (err) {}
+  });
+})();
+</script>
+</body>
+</html>
