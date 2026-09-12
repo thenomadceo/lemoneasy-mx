@@ -43,6 +43,10 @@ gtag('config', 'G-18X7J9MPBW');
   ::selection{background:#FFF000;color:#0a0a08;}
   a{color:#1a1a14;text-decoration:underline;text-decoration-color:#FFF000;text-decoration-thickness:2px;}
   a:hover{color:#000;background:#FFF000;}
+  a.onyellow{color:#0a0a08;text-decoration-color:#0a0a08;}
+  a.onyellow:hover{color:#FFF000;background:#0a0a08;}
+  a.ondark{color:#d8d6cc;}
+  a.ondark:hover{color:#0a0a08;background:#FFF000;}
   img,video{max-width:100%;}
   h1,h2{text-wrap:balance;}
   p{text-wrap:pretty;}
@@ -59,7 +63,7 @@ gtag('config', 'G-18X7J9MPBW');
   .card p{margin:0;}
   .card .t{font-weight:bold;font-size:17px;margin:0 0 6px;}
   .card .d{font-size:16px;line-height:1.55;color:#454336;}
-  .grid{display:grid;gap:36px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));}
+  .grid{display:grid;gap:36px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));}
   .field{display:flex;flex-direction:column;gap:6px;font-size:15px;color:#d8d6cc;}
   .field input,.field select,.field textarea{background:#fff;border:none;border-radius:6px;padding:14px;font-size:17px;color:#0a0a08;appearance:auto;width:100%;}
   .field textarea{min-height:88px;resize:vertical;}
@@ -79,13 +83,13 @@ gtag('config', 'G-18X7J9MPBW');
 
 <!-- 01 Hero -->
 <section style="background:#0a0a08;background-image:radial-gradient(120% 90% at 72% 8%,#17170f 0%,rgba(10,10,8,0) 62%);color:#faf9f4;padding:56px 20px 0;">
-  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:32px;align-items:center;">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:32px;align-items:center;">
     <div style="padding-bottom:56px;">
       <p class="eyebrow" style="display:inline-block;background:#FFF000;color:#0a0a08;padding:6px 12px;border-radius:4px;margin-bottom:20px;">Für Restaurants, Bars und Hotels</p>
       <h1 class="marker" style="font-size:clamp(34px,6vw,58px);line-height:1.12;margin:0 0 20px;">Zitronensaft schieben <span style="color:#FFF000;">statt pressen.</span></h1>
-      <p style="font-size:19px;line-height:1.55;color:#d8d6cc;margin:0 0 28px;max-width:46ch;">Ein Musterstück kostenlos auf Ihren Tisch. LEMONEASY ist eine Zitronenpresse aus Edelstahl, gefertigt in Baden-Württemberg, gebaut für den Tisch und die Spülmaschine.</p>
+      <p style="font-size:19px;line-height:1.55;color:#d8d6cc;margin:0 0 28px;max-width:46ch;">Ein Musterstück kostenlos auf Ihren Tisch. LEMONEASY ist eine Zitronenpresse aus Edelstahl, gefertigt in Baden-Württemberg, spülmaschinenfest.</p>
       <a href="#anfrage" class="btn">Musterstück für mein Haus anfragen</a>
-      <p style="font-size:14px;color:#8f8d82;margin:14px 0 0;">Kostenlos, ohne Bestellverpflichtung. Es beginnt mit einem Telefonat von 10 Minuten, in dem wir den Einsatz in Ihrem Haus klären. Das Musterstück wird nach dem Gespräch versendet.</p>
+      <p style="font-size:14px;color:#8f8d82;margin:14px 0 0;">Kostenlos, ohne Bestellverpflichtung. Erst ein Telefonat von 10 Minuten, dann der Versand.</p>
     </div>
     <div style="align-self:end;display:flex;justify-content:center;position:relative;padding-bottom:40px;">
       <img src="img/muster-hero.jpg" alt="LEMONEASY Zitronenpresse aus Edelstahl auf einem Bett aus Zitronen" style="width:100%;max-width:460px;border-radius:14px;display:block;box-shadow:0 24px 48px -16px rgba(0,0,0,.7);">
@@ -99,8 +103,7 @@ gtag('config', 'G-18X7J9MPBW');
   <div class="narrow">
     <p class="eyebrow" style="color:#7a7768;">Das kennen Ihre Gäste</p>
     <p class="marker" style="font-size:clamp(24px,3.6vw,36px);line-height:1.3;margin:0 0 20px;color:#0a0a08;">Kerne im Glas, Spritzer auf der Bluse, klebrige Finger vor dem Hauptgang.</p>
-    <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 14px;max-width:60ch;">Die Zitronenspalte am Fisch, am Schnitzel und im Wasser gehört zum Service. Was dabei auf dem Tisch landet, gehört nicht dazu.</p>
-    <p style="font-size:18px;line-height:1.6;color:#454336;margin:0;max-width:60ch;">LEMONEASY schiebt die Spalte, statt sie zu quetschen. Der Saft läuft gerichtet auf den Teller, die Kerne bleiben im Sieb, die Hand bleibt trocken.</p>
+    <p style="font-size:18px;line-height:1.6;color:#454336;margin:0;max-width:60ch;">Die Zitronenspalte am Fisch, am Schnitzel und im Wasser gehört zum Service. LEMONEASY schiebt die Spalte, statt sie zu quetschen: der Saft läuft gerichtet aus, ohne die großen Kerne, ohne Kontakt mit der Frucht.</p>
   </div>
 </section>
 
@@ -109,8 +112,8 @@ gtag('config', 'G-18X7J9MPBW');
   <div class="wrap">
     <p class="eyebrow" style="color:#FFF000;">Auf dem Tisch</p>
     <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 32px;">Ein Teil auf jedem gedeckten Tisch, so groß wie ein Salzstreuer.</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
-      <figure><img src="img/tisch-am-meer.jpg" alt="Gedeckter Restauranttisch mit LEMONEASY neben dem Weinglas" style="width:100%;border-radius:10px;display:block;"><figcaption>Am gedeckten Tisch: der Gast dosiert selbst, ohne Kerne, ohne Spritzer.</figcaption></figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px;">
+      <figure><img src="img/tisch-am-meer.jpg" alt="Gedeckter Restauranttisch mit LEMONEASY neben dem Weinglas" style="width:100%;border-radius:10px;display:block;"><figcaption>Am gedeckten Tisch: der Gast dosiert selbst, ohne die Frucht anzufassen.</figcaption></figure>
       <figure><img src="img/fischteller.jpg" alt="Gegrillter Fisch mit LEMONEASY und Zitronenspalte am Tellerrand" style="width:100%;border-radius:10px;display:block;"><figcaption>Am Fischteller: die Spalte liegt in der Presse, der Saft geht auf den Fisch.</figcaption></figure>
     </div>
   </div>
@@ -119,38 +122,39 @@ gtag('config', 'G-18X7J9MPBW');
 <!-- 04 Der Hersteller -->
 <section style="background:#faf9f4;padding:72px 20px;">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;">
       <figure>
-        <img src="img/manfred-workshop.jpg" alt="Manfred, der Hersteller, mit seinem Drehermeister in der Werkstatt in Baden-Württemberg" style="width:100%;border-radius:10px;display:block;">
-        <figcaption style="font-size:14px;margin-top:10px;">Manfred, der Hersteller, und sein Drehermeister in der Werkstatt. In den Händen: das Werkzeug, mit dem LEMONEASY gefertigt wird.</figcaption>
+        <img src="img/manfred-workshop.jpg" alt="Manfred, der Gründer, in der Fertigung in Baden-Württemberg" style="width:100%;border-radius:10px;display:block;">
+        <figcaption style="font-size:14px;margin-top:10px;">Manfred, der Gründer, in der Fertigung. In den Händen: das Werkzeug, mit dem LEMONEASY gefertigt wird.</figcaption>
       </figure>
       <div>
         <p class="eyebrow" style="color:#7a7768;">Gefertigt in Baden-Württemberg</p>
-        <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 20px;color:#0a0a08;">Ein Betrieb, der abnimmt, wenn Sie anrufen.</h2>
-        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 16px;">Manfred ist 84. Er hat Jahrzehnte lang Metallteile für die deutsche Automobilindustrie gefertigt, den Betrieb verkauft und statt in den Ruhestand zu gehen Mannemake gegründet, die Werkstatt, die LEMONEASY heute mit eigenem Werkzeug fertigt.</p>
-        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0;">Für Ihr Haus heißt das: kein anonymer Katalog, sondern ein Hersteller mit Namen und Gesicht. Nachbestellung, Reklamation oder eine Frage zur Pflege gehen an eine Werkstatt, die antwortet.</p>
+        <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 20px;color:#0a0a08;">Ein Hersteller mit Namen und Gesicht.</h2>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 14px;">Manfred ist 84.</p>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 14px;">Er hat jahrzehntelang Metallteile für die deutsche Automobilindustrie gefertigt. Dann hat er den Betrieb verkauft. Statt in den Ruhestand zu gehen, gründete er Mannemake, das Unternehmen hinter LEMONEASY, gefertigt mit eigenem Werkzeug in Baden-Württemberg.</p>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 14px;">Für Ihr Haus heißt das: kein anonymer Katalog.</p>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0;">Hinter dem Produkt steht ein Hersteller, den Sie beim Namen kennen. Der Kundenservice sitzt in Deutschland und antwortet auf Deutsch. Eine Nachbestellung oder eine Frage zur Pflege landet bei Menschen, nicht in einer Warteschleife.</p>
         <div style="display:flex;align-items:center;gap:16px;margin-top:26px;">
           <img src="img/made-in-germany.png" alt="Made in Germany Siegel" width="96" height="96" style="width:96px;height:96px;display:block;flex:0 0 96px;filter:drop-shadow(0 6px 18px rgba(0,0,0,.25));">
           <p style="margin:0;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#7a7768;line-height:1.5;">Baden-Württemberg<br>Deutschland</p>
         </div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px;">
-      <figure><img src="img/plant.jpg" alt="Die Fertigung, in der jedes Teil gestanzt wird" style="width:100%;height:300px;object-fit:cover;border-radius:8px;display:block;"><figcaption>Die Fertigung, in der jedes Teil gestanzt wird.</figcaption></figure>
-      <figure><img src="img/manfred-turner.jpg" alt="Manfred und sein Drehermeister in der Fertigung" style="width:100%;height:300px;object-fit:cover;object-position:center 18%;border-radius:8px;display:block;"><figcaption>Das Werkzeug wird im Haus gebaut und gepflegt.</figcaption></figure>
-      <figure><img src="img/manfred-portrait.jpg" alt="Manfred in der Werkstatt" style="width:100%;height:300px;object-fit:cover;object-position:center 15%;border-radius:8px;display:block;"><figcaption>Manfred, 84, ein Leben in der deutschen Fertigung. Er steht für das, was seine Werkstatt verlässt.</figcaption></figure>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;margin-top:40px;">
+      <figure><img src="img/plant.jpg" alt="Die Fertigung in Baden-Württemberg" style="width:100%;height:300px;object-fit:cover;border-radius:8px;display:block;"><figcaption>Die Fertigung in Baden-Württemberg.</figcaption></figure>
+      <figure><img src="img/manfred-turner.jpg" alt="Manfred in der Fertigung, mit einem Werkzeugteil in der Hand" style="width:100%;height:300px;object-fit:cover;object-position:center 18%;border-radius:8px;display:block;"><figcaption>Eigenes Werkzeug, eigene Teile.</figcaption></figure>
+      <figure><img src="img/manfred-portrait.jpg" alt="Manfred in der Werkstatt" style="width:100%;height:300px;object-fit:cover;object-position:center 15%;border-radius:8px;display:block;"><figcaption>Manfred, 84, ein Leben in der deutschen Metallfertigung.</figcaption></figure>
     </div>
   </div>
 </section>
 
 <!-- 05 Amazon-Beleg -->
 <section style="background:#FFF000;padding:64px 20px;">
-  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:32px;align-items:center;">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:32px;align-items:center;">
     <div>
       <p class="eyebrow" style="color:#5c5a00;">Beleg statt Versprechen</p>
       <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 18px;color:#0a0a08;">Privatkunden kaufen es heute schon zum vollen Preis.</h2>
-      <p style="font-size:18px;line-height:1.6;color:#3a3800;margin:0 0 14px;max-width:60ch;">LEMONEASY verkauft sich auf Amazon.de für 29,99 EUR im Einzelhandel, ohne Rabatt und ohne Händler dahinter. In der vollsten Küchenkategorie, die es gibt.</p>
-      <p style="font-size:18px;line-height:1.6;color:#3a3800;margin:0;max-width:60ch;">Was ein Privathaushalt zu diesem Preis kauft, hält im Service eines Restaurants. Das Musterstück zeigt es Ihnen auf Ihrem eigenen Tisch.</p>
+      <p style="font-size:18px;line-height:1.6;color:#3a3800;margin:0;max-width:60ch;">LEMONEASY verkauft sich auf Amazon.de für 29,99 EUR, sofort lieferbar, mit 4,5 von 5 Sternen. Ob es auch im Service Ihres Hauses besteht, zeigt Ihnen das Musterstück auf Ihrem eigenen Tisch.</p>
     </div>
     <div style="background:#0a0a08;color:#faf9f4;border-radius:12px;padding:28px 26px;box-shadow:0 18px 40px -24px rgba(0,0,0,.6);">
       <p style="margin:0 0 6px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#8f8d82;">Amazon.de, geprüft am 12. September 2026</p>
@@ -163,7 +167,7 @@ gtag('config', 'G-18X7J9MPBW');
         <span>2 Sterne</span><span style="height:8px;background:#26261e;border-radius:4px;overflow:hidden;"><span style="display:block;height:100%;width:3%;background:#FFF000;"></span></span><span>3%</span>
         <span>1 Stern</span><span style="height:8px;background:#26261e;border-radius:4px;overflow:hidden;"><span style="display:block;height:100%;width:2%;background:#FFF000;"></span></span><span>2%</span>
       </div>
-      <p style="margin:18px 0 0;font-size:14px;"><a href="https://www.amazon.de/dp/B0C8SNPQ52" target="_blank" rel="noopener" style="color:#faf9f4;">Zum Angebot auf Amazon.de</a></p>
+      <p style="margin:18px 0 0;font-size:14px;"><a class="ondark" href="https://www.amazon.de/dp/B0C8SNPQ52" target="_blank" rel="noopener">Zum Angebot auf Amazon.de</a></p>
     </div>
   </div>
 </section>
@@ -183,11 +187,11 @@ gtag('config', 'G-18X7J9MPBW');
         <img src="img/product-in-use.jpg" alt="LEMONEASY im Einsatz über Glas und Teller" style="width:100%;border-radius:10px;display:block;">
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;">
-        <div class="card"><p class="t">Schieben statt pressen</p><p class="d">Halbe Spalte einlegen, Schieber vor, der Saft läuft gerichtet aus. Keine Kerne im Glas, keine Berührung der Frucht, bis zu ein Esslöffel Saft aus einer Spalte.</p></div>
-        <div class="card"><p class="t">Edelstahl 1.4301</p><p class="d">Hochglanzpoliert, derselbe Stahl wie Profibesteck und Großküchengeräte. Lebensmittelecht, rostfrei, unempfindlich gegen Säure.</p></div>
+        <div class="card"><p class="t">Schieben statt pressen</p><p class="d">Spalte einlegen, Schieber vor, der Saft läuft gerichtet aus. Ohne die großen Kerne, ohne Kontakt mit der Frucht, bis zu ein Esslöffel Saft aus einer Spalte.</p></div>
+        <div class="card"><p class="t">Edelstahl 1.4301</p><p class="d">Rostfreier Edelstahl mit polierter Oberfläche, die Güte von Profibesteck und Großküchengeräten. Kein Kunststoff, nichts, was bricht.</p></div>
         <div class="card"><p class="t">Zwei Teile, im Werk verbunden</p><p class="d">Die beiden Teile sind fest verbördelt. Nichts geht auseinander, nichts geht verloren, nichts muss nachbestellt werden.</p></div>
-        <div class="card"><p class="t">Spülmaschinenfest</p><p class="d">Nach dem Service kurz abspülen und mit dem Besteck in die Maschine. Gebaut für den täglichen Durchlauf in Bar und Küche.</p></div>
-        <div class="card"><p class="t">Zitrone und Limette</p><p class="d">Spalten bis 1 cm Stärke im Standardmodell, Viertel im Modell Plus. Getestet mit Zitronen und Limetten.</p></div>
+        <div class="card"><p class="t">Spülmaschinenfest</p><p class="d">Nach dem Service kurz abspülen und mit dem Besteck in die Maschine. Gemacht für Bar und Restaurant genauso wie für zu Hause.</p></div>
+        <div class="card"><p class="t">Zitrone und Limette</p><p class="d">Scheiben bis 1 cm im Standardmodell, Viertel im Modell Plus. Funktioniert mit Zitronen und Limetten.</p></div>
         <div class="card"><p class="t">119 Gramm, 10 mal 7 Zentimeter</p><p class="d">Passt in die Servierstation, neben den Salzstreuer und in die Besteckschublade. Ein Teil pro Tisch, kein Platzproblem.</p></div>
       </div>
     </div>
@@ -196,14 +200,14 @@ gtag('config', 'G-18X7J9MPBW');
 
 <!-- 07 Das Musterstück -->
 <section style="background:#0a0a08;color:#faf9f4;padding:72px 20px;border-top:1px solid #1c1c15;">
-  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:40px;align-items:center;">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:40px;align-items:center;">
     <div>
       <p class="eyebrow" style="color:#FFF000;">Das Musterstück</p>
       <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 20px;">Ein Stück auf Ihren Tisch, Ihre Gäste entscheiden.</h2>
       <div style="display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.55;color:#d8d6cc;">
         <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Was kommt.</span> Ein LEMONEASY aus der laufenden Fertigung, dasselbe Stück, das Sie später bestellen würden, ohne Kosten für Sie.</p>
         <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Wohin.</span> An die Adresse Ihres Hauses in Deutschland.</p>
-        <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Was dann passiert.</span> Nach Ihrer Anfrage buchen Sie ein Telefonat von 10 Minuten mit Roman. Darin klären wir, wer im Haus entscheidet, wo das Stück eingesetzt wird und wohin es geht.</p>
+        <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Was dann passiert.</span> Nach Ihrer Anfrage buchen Sie ein Telefonat von 10 Minuten mit Roman. Darin klären wir, wer im Haus entscheidet, wo das Stück eingesetzt wird und an welche Adresse es geht.</p>
         <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Die eine Bedingung.</span> Das Musterstück wird nach dem Gespräch versendet. Wir versenden keine Muster ohne Gespräch, weil wir Häuser suchen, die es einsetzen, und keine Schubladen, in denen es liegt.</p>
         <p style="margin:0;"><span style="font-weight:bold;color:#faf9f4;">Ohne Verpflichtung.</span> Sie testen es im Service, mit Ihrem Team und Ihren Gästen. Überzeugt es nicht, endet es dort.</p>
       </div>
@@ -216,7 +220,7 @@ gtag('config', 'G-18X7J9MPBW');
 <section id="anfrage" style="background:#0a0a08;background-image:radial-gradient(110% 70% at 50% 0%,#16160f 0%,rgba(10,10,8,0) 60%);color:#faf9f4;padding:72px 20px 88px;border-top:1px solid #1c1c15;">
   <div style="max-width:560px;margin:0 auto;">
     <h2 class="marker" style="font-size:clamp(28px,4vw,40px);line-height:1.2;margin:0 0 12px;">Sagen Sie uns, wohin das Stück geht.</h2>
-    <p style="font-size:17px;line-height:1.55;color:#d8d6cc;margin:0 0 32px;">Wir versenden keine Muster blind. Sagen Sie uns, wer Sie sind und welches Haus Sie führen. Der nächste Schritt ist ein Telefonat von 10 Minuten mit Roman, danach geht das Stück raus.</p>
+    <p style="font-size:17px;line-height:1.55;color:#d8d6cc;margin:0 0 32px;">Wir versenden keine Muster blind. Sagen Sie uns, wer Sie sind und welches Haus Sie führen; danach folgt das Telefonat mit Roman, dann der Versand.</p>
 
     <form id="lead-form" novalidate style="display:flex;flex-direction:column;gap:18px;">
       <div class="two">
@@ -233,7 +237,8 @@ gtag('config', 'G-18X7J9MPBW');
             <option value="hotel">Hotel</option>
             <option value="cafe">Café</option>
             <option value="kantine">Kantine / Betriebsgastronomie</option>
-            <option value="sonstiges">Sonstiges</option>
+            <option value="sonstiges">Sonstiger Betrieb</option>
+            <option value="privat">Privathaushalt</option>
           </select>
         </label>
         <label class="field">Ihre Rolle
@@ -290,16 +295,16 @@ gtag('config', 'G-18X7J9MPBW');
            muss "website" bleiben: das ist das Feld, das /api/lp-optin für
            diesen Kunden prüft. -->
       <input name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;">
-      <p id="form-error" hidden style="margin:0;font-size:15px;color:#FFF000;"></p>
+      <p id="form-error" role="alert" aria-live="assertive" hidden style="margin:0;font-size:15px;color:#FFF000;"></p>
       <button type="submit" class="btn" style="padding:18px;margin-top:6px;">Musterstück anfragen</button>
-      <p style="font-size:13px;color:#8f8d82;margin:0;">Ihre Angaben nutzen wir nur für das Gespräch und den Versand. Kein Newsletter, keine Weitergabe.</p>
+      <p style="font-size:13px;color:#8f8d82;margin:0;">Ihre Angaben nutzen wir für das Gespräch und den Versand des Musterstücks. Kein Newsletter. Details in der <a class="ondark" href="https://lemoneasy.de/policies/privacy-policy" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
     </form>
   </div>
 </section>
 
 <footer style="background:#0a0a08;border-top:1px solid #22221c;padding:28px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
   <img src="img/logo.png" alt="LEMONEASY" style="height:34px;width:auto;display:block;">
-  <p style="font-size:13px;color:#8f8d82;margin:0;">LEMONEASY. Gefertigt in Baden-Württemberg. <a href="https://www.lemoneasy.de/" style="color:#8f8d82;">lemoneasy.de</a></p>
+  <p style="font-size:13px;color:#8f8d82;margin:0;">LEMONEASY. Gefertigt in Baden-Württemberg. <a class="ondark" href="https://www.lemoneasy.de/">lemoneasy.de</a> · <a class="ondark" href="https://lemoneasy.de/policies/legal-notice" target="_blank" rel="noopener">Impressum</a> · <a class="ondark" href="https://lemoneasy.de/policies/privacy-policy" target="_blank" rel="noopener">Datenschutz</a></p>
 </footer>
 
 <script>
@@ -340,8 +345,13 @@ gtag('config', 'G-18X7J9MPBW');
     var fd = new FormData(form);
     var lead = Object.fromEntries(fd.entries());
     if (!phoneLooksGerman(lead.telefon)) {
-      showError('Bitte geben Sie eine Telefonnummer mit Vorwahl an, zum Beispiel 07161 12345 oder 0151 12345678.');
-      form.querySelector('[name="telefon"]').focus();
+      var tel = form.querySelector('[name="telefon"]');
+      showError(/[a-zA-Z]/.test(String(lead.telefon || ''))
+        ? 'Die Telefonnummer darf nur Ziffern enthalten, zum Beispiel 07161 12345.'
+        : 'Bitte geben Sie eine Telefonnummer mit Vorwahl an, zum Beispiel 07161 12345 oder 0151 12345678.');
+      tel.setAttribute('aria-invalid', 'true');
+      tel.setAttribute('aria-describedby', 'form-error');
+      tel.focus();
       return;
     }
     var btn = form.querySelector('button[type="submit"]');
@@ -400,6 +410,11 @@ gtag('config', 'G-18X7J9MPBW');
     try {
       if (data && data.bookingUrl) sessionStorage.setItem('lemoneasy_de_booking', data.bookingUrl);
       sessionStorage.setItem('lemoneasy_de_name', lead.firstName || '');
+      // Schritt 2 tells "saved, Roman calls" apart from "not saved, try again",
+      // and prefills the HubSpot booking form so the booking email matches the
+      // registration email (the booking-to-lead match keys on it).
+      sessionStorage.setItem('lemoneasy_de_saved', saved ? '1' : '0');
+      sessionStorage.setItem('lemoneasy_de_contact', JSON.stringify({ firstName: lead.firstName || '', lastName: lead.lastName || '', email: lead.email || '' }));
     } catch (err) {}
     var next = 'schritt-2/?name=' + encodeURIComponent(lead.firstName || '');
 

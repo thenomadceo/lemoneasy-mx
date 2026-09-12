@@ -35,6 +35,8 @@ gtag('config', 'G-18X7J9MPBW');
   ::selection{background:#FFF000;color:#0a0a08;}
   a{color:#faf9f4;text-decoration:underline;text-decoration-color:#FFF000;text-decoration-thickness:2px;}
   a:hover{color:#0a0a08;background:#FFF000;}
+  a.ondark{color:#d8d6cc;}
+  a.ondark:hover{color:#0a0a08;background:#FFF000;}
   a,button{transition:background-color .18s ease,color .18s ease;}
   img{max-width:100%;}
   h1{text-wrap:balance;}
@@ -51,8 +53,8 @@ gtag('config', 'G-18X7J9MPBW');
   </header>
   <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px;">
     <div style="max-width:560px;">
-      <p style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Anfrage eingegangen</p>
-      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span>Noch ein Schritt: 10 Minuten mit Roman.</h1>
+      <p id="badge" style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Anfrage eingegangen</p>
+      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Noch ein Schritt: 10 Minuten mit Roman.</span></h1>
       <div style="display:flex;align-items:center;gap:16px;background:#12120e;border:1px solid #26261e;border-radius:10px;padding:16px;margin:0 0 20px;">
         <img src="../img/roman-lewcke.jpg" alt="Roman Lewcke, Gastro-Vertrieb für LEMONEASY" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
         <div>
@@ -61,8 +63,7 @@ gtag('config', 'G-18X7J9MPBW');
           <a href="https://www.linkedin.com/in/romanlbinder/" target="_blank" rel="noopener" style="font-size:15px;">Profil auf LinkedIn</a>
         </div>
       </div>
-      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 14px;">In einem Telefonat von 10 Minuten klärt Roman mit Ihnen, wer im Haus über die Bestellung entscheidet, wo das Musterstück eingesetzt wird und an welche Adresse es geht.</p>
-      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 32px;">Das Gespräch ist der letzte Schritt vor dem Versand. Ohne Gespräch kein Musterstück.</p>
+      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 32px;">In 10 Minuten klärt Roman mit Ihnen, wer im Haus entscheidet, wo das Musterstück eingesetzt wird und an welche Adresse es geht. Das Gespräch ist der letzte Schritt vor dem Versand.</p>
 
       <div id="book-block" hidden>
         <a id="book" href="#" class="btn">Gespräch mit Roman buchen</a>
@@ -72,10 +73,14 @@ gtag('config', 'G-18X7J9MPBW');
         <p class="marker" style="font-size:22px;color:#FFF000;margin:0 0 8px;">Roman meldet sich telefonisch.</p>
         <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">Ihre Anfrage liegt vor. Roman ruft Sie in den nächsten Werktagen unter der angegebenen Nummer an, um das Gespräch zu führen und den Versand zu klären.</p>
       </div>
+      <div id="notsaved-block" hidden style="background:#12120e;border:2px solid #FFF000;border-radius:10px;padding:22px 24px;">
+        <p class="marker" style="font-size:22px;color:#FFF000;margin:0 0 8px;">Die Anfrage ist nicht angekommen.</p>
+        <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">Beim Senden gab es ein technisches Problem, wir haben Ihre Angaben nicht erhalten. Bitte <a href="../">zurück zum Formular</a> und noch einmal senden, oder schreiben Sie direkt an <a href="mailto:hallo@lemoneasy.de">hallo@lemoneasy.de</a>.</p>
+      </div>
     </div>
   </main>
   <footer style="border-top:1px solid #22221c;padding:22px 20px;">
-    <p style="font-size:13px;color:#8f8d82;margin:0;">LEMONEASY. Gefertigt in Baden-Württemberg.</p>
+    <p style="font-size:13px;color:#8f8d82;margin:0;">LEMONEASY. Gefertigt in Baden-Württemberg. <a class="ondark" href="https://lemoneasy.de/policies/legal-notice" target="_blank" rel="noopener">Impressum</a> · <a class="ondark" href="https://lemoneasy.de/policies/privacy-policy" target="_blank" rel="noopener">Datenschutz</a></p>
   </footer>
 </div>
 <script>
@@ -89,9 +94,27 @@ gtag('config', 'G-18X7J9MPBW');
   // is deliberately NO hardcoded fallback link: which calendar carries these
   // calls is Roman's decision, and a stale default would book the wrong one.
   var url = '';
-  try { url = sessionStorage.getItem('lemoneasy_de_booking') || ''; } catch (e) {}
-  if (url && /^https:\/\/meetings\.hubspot\.com\//.test(url)) {
-    document.getElementById('book').href = url;
+  var savedFlag = '';
+  var contact = {};
+  try {
+    url = sessionStorage.getItem('lemoneasy_de_booking') || '';
+    savedFlag = sessionStorage.getItem('lemoneasy_de_saved') || '';
+    contact = JSON.parse(sessionStorage.getItem('lemoneasy_de_contact') || '{}') || {};
+  } catch (e) {}
+  if (savedFlag === '0') {
+    // The POST failed: nothing is stored, nobody will call. Say so instead
+    // of promising a callback that cannot happen.
+    document.getElementById('badge').hidden = true;
+    document.getElementById('h1text').textContent = 'Bitte senden Sie die Anfrage noch einmal.';
+    document.getElementById('notsaved-block').hidden = false;
+  } else if (url && /^https:\/\/meetings\.hubspot\.com\//.test(url)) {
+    // Prefill the HubSpot form so the booking carries the same name and
+    // email as the registration; the server matches bookings to leads on it.
+    var qs = [];
+    if (contact.firstName) qs.push('firstname=' + encodeURIComponent(contact.firstName));
+    if (contact.lastName) qs.push('lastname=' + encodeURIComponent(contact.lastName));
+    if (contact.email) qs.push('email=' + encodeURIComponent(contact.email));
+    document.getElementById('book').href = url + (qs.length ? (url.indexOf('?') >= 0 ? '&' : '?') + qs.join('&') : '');
     document.getElementById('book-block').hidden = false;
   } else {
     document.getElementById('nobook-block').hidden = false;
