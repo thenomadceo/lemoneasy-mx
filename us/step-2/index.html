@@ -42,6 +42,10 @@ gtag('config', 'G-18X7J9MPBW');
   .marker{font-family:'Permanent Marker','Marker Felt Wide',cursive;font-weight:400;}
   .btn{display:inline-block;background:#FFF000;color:#0a0a08;text-decoration:none;font-size:18px;font-weight:bold;padding:16px 28px;border-radius:8px;}
   .btn:hover{background:#fff;color:#0a0a08;}
+  /* HubSpot meetings embed. The script sets the iframe's own height; the
+     min-height keeps the page from jumping while it loads. */
+  .meetings-iframe-container{min-height:620px;background:#12120e;border:1px solid #26261e;border-radius:10px;overflow:hidden;}
+  .meetings-iframe-container iframe{display:block;}
 </style>
 </head>
 <body>
@@ -51,8 +55,8 @@ gtag('config', 'G-18X7J9MPBW');
   </header>
   <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px;">
     <div style="max-width:560px;">
-      <p style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Request received</p>
-      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span>One more step: book your call with Roman.</h1>
+      <p id="badge" style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Request received</p>
+      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Last step: pick your time with Roman.</span></h1>
       <div style="display:flex;align-items:center;gap:16px;background:#12120e;border:1px solid #26261e;border-radius:10px;padding:16px;margin:0 0 20px;">
         <img src="/roman-lewcke.jpg" alt="Roman Lewcke, US distributor development for Lemoneasy" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
         <div>
@@ -61,10 +65,14 @@ gtag('config', 'G-18X7J9MPBW');
           <a href="https://www.linkedin.com/in/romanlbinder/" target="_blank" rel="noopener" style="font-size:15px;">See profile on LinkedIn</a>
         </div>
       </div>
-      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 14px;">In a 20-minute video call on Google Meet, Roman goes through your channel and your volume with you, confirms the shipping address, and releases your sample unit.</p>
+      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 14px;">Pick a slot in the calendar below. In a 20-minute video call on Google Meet, Roman goes through your channel and your volume with you, confirms the shipping address, and releases your sample unit.</p>
       <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 32px;">You get the spec sheet and the wholesale terms on that call. This call is the last step before your unit ships. No call, no sample.</p>
-      <a id="book" href="https://meetings.hubspot.com/roman-lewcke/exportkontor-advisor" class="btn">Book your call with Roman</a>
-      <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">Pick the slot that suits you. It is a Google Meet video call: the link arrives by email and by text, and you click it at the agreed time.</p>
+      <div id="hs-calendar" class="meetings-iframe-container"></div>
+      <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">It is a Google Meet video call: the link arrives by email and by text, and you click it at the agreed time. Calendar not loading? <a id="book" href="https://meetings.hubspot.com/roman-lewcke/exportkontor-advisor" target="_blank" rel="noopener">Book in a new window</a>.</p>
+      <div id="booked-block" hidden style="background:#12120e;border:2px solid #7AD03A;border-radius:10px;padding:22px 24px;margin:20px 0 0;">
+        <p class="marker" style="font-size:22px;color:#7AD03A;margin:0 0 8px;">You are booked.</p>
+        <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">The confirmation with date, time and the Google Meet link is on its way by email. Your sample unit ships after that call.</p>
+      </div>
     </div>
   </main>
   <footer style="border-top:1px solid #22221c;padding:22px 20px;">
@@ -79,10 +87,43 @@ gtag('config', 'G-18X7J9MPBW');
   // The booking link is whatever /api/lp-optin returned (LEMONEASY_US_BOOKING_URL
   // on the server). The href above is the fallback for a visitor who lands here
   // without having submitted in this session.
+  var link = document.getElementById('book');
+  var url = link.getAttribute('href');
+  var contact = {};
   try {
-    var url = sessionStorage.getItem('lemoneasy_us_booking');
-    if (url && /^https:\/\/meetings\.hubspot\.com\//.test(url)) document.getElementById('book').href = url;
+    var stored = sessionStorage.getItem('lemoneasy_us_booking');
+    if (stored && /^https:\/\/meetings\.hubspot\.com\//.test(stored)) url = stored;
+    contact = JSON.parse(sessionStorage.getItem('lemoneasy_us_contact') || '{}') || {};
   } catch (e) {}
+  // Prefill the HubSpot form so the booking carries the same name and email
+  // as the registration; the server matches bookings to leads on it.
+  var qs = [];
+  if (contact.firstName) qs.push('firstname=' + encodeURIComponent(contact.firstName));
+  if (contact.lastName) qs.push('lastname=' + encodeURIComponent(contact.lastName));
+  if (contact.email) qs.push('email=' + encodeURIComponent(contact.email));
+  var sep = url.indexOf('?') >= 0 ? '&' : '?';
+  var prefilled = url + (qs.length ? sep + qs.join('&') : '');
+  link.href = prefilled;
+  // The calendar itself sits on this page (HubSpot meetings embed), so the
+  // booking is the step the visitor is standing in, not a click away. The
+  // prefilled link above stays as the fallback for a blocked iframe.
+  document.getElementById('hs-calendar').setAttribute('data-src', prefilled + (qs.length ? '&' : sep) + 'embed=true');
+  var hs = document.createElement('script');
+  hs.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+  hs.async = true;
+  document.body.appendChild(hs);
+  // HubSpot posts {meetingBookSucceeded: true} from the iframe once the slot
+  // is confirmed. That is the real Schedule signal; the anchor-click tracker
+  // below only sees the fallback link.
+  window.addEventListener('message', function (ev) {
+    var d = ev && ev.data;
+    if (!d || typeof d !== 'object' || d.meetingBookSucceeded !== true) return;
+    try { if (window.fbq) window.fbq('track', 'Schedule'); } catch (err) {}
+    try { if (window.gtag) window.gtag('event', 'schedule_booked'); } catch (err) {}
+    document.getElementById('badge').textContent = 'Call booked';
+    document.getElementById('h1text').textContent = 'Your call is booked.';
+    document.getElementById('booked-block').hidden = false;
+  });
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href*="meetings.hubspot.com"]') : null;
     if (!a) return;

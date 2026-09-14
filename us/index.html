@@ -391,6 +391,9 @@ gtag('config', 'G-18X7J9MPBW');
     try {
       if (data && data.bookingUrl) sessionStorage.setItem('lemoneasy_us_booking', data.bookingUrl);
       sessionStorage.setItem('lemoneasy_us_name', lead.firstName || '');
+      // Step 2 prefills the calendar with these so the booking carries the
+      // same name and email as the registration (the server matches on it).
+      sessionStorage.setItem('lemoneasy_us_contact', JSON.stringify({ firstName: lead.firstName || '', lastName: lead.lastName || '', email: lead.email || '' }));
     } catch (err) {}
     var next = '/us/step-2/?name=' + encodeURIComponent(lead.firstName || '');
 
