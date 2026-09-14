@@ -44,6 +44,10 @@ gtag('config', 'G-18X7J9MPBW');
   .marker{font-family:'Permanent Marker','Marker Felt Wide',cursive;font-weight:400;}
   .btn{display:inline-block;background:#FFF000;color:#0a0a08;text-decoration:none;font-size:18px;font-weight:bold;padding:16px 28px;border-radius:8px;}
   .btn:hover{background:#fff;color:#0a0a08;}
+  /* HubSpot meetings embed. The script sets the iframe's own height; the
+     min-height keeps the page from jumping while it loads. */
+  .meetings-iframe-container{min-height:620px;background:#12120e;border:1px solid #26261e;border-radius:10px;overflow:hidden;}
+  .meetings-iframe-container iframe{display:block;}
 </style>
 </head>
 <body>
@@ -54,7 +58,7 @@ gtag('config', 'G-18X7J9MPBW');
   <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px;">
     <div style="max-width:560px;">
       <p id="badge" style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Anfrage eingegangen</p>
-      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Noch ein Schritt: 10 Minuten mit Roman.</span></h1>
+      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Letzter Schritt: Termin mit Roman wählen.</span></h1>
       <div style="display:flex;align-items:center;gap:16px;background:#12120e;border:1px solid #26261e;border-radius:10px;padding:16px;margin:0 0 20px;">
         <img src="../img/roman-lewcke.jpg" alt="Roman Lewcke, Gastro-Vertrieb für LEMONEASY" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
         <div>
@@ -63,11 +67,15 @@ gtag('config', 'G-18X7J9MPBW');
           <a href="https://www.linkedin.com/in/romanlbinder/" target="_blank" rel="noopener" style="font-size:15px;">Profil auf LinkedIn</a>
         </div>
       </div>
-      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 32px;">In 10 Minuten klärt Roman mit Ihnen, wer im Haus entscheidet, wo das Musterstück eingesetzt wird und an welche Adresse es geht. Das Gespräch ist der letzte Schritt vor dem Versand.</p>
+      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 28px;">Wählen Sie unten direkt einen Termin. Roman ruft Sie zur gewählten Zeit an und klärt in 10 Minuten, wer im Haus entscheidet, wo das Musterstück eingesetzt wird und an welche Adresse es geht. Das Musterstück geht nach diesem Gespräch raus.</p>
 
       <div id="book-block" hidden>
-        <a id="book" href="#" class="btn">Gespräch mit Roman buchen</a>
-        <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">Wählen Sie den Termin, der Ihnen passt. Roman ruft Sie zur vereinbarten Zeit unter der angegebenen Nummer an; die Bestätigung kommt per E-Mail.</p>
+        <div id="hs-calendar" class="meetings-iframe-container"></div>
+        <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">Roman ruft Sie zur gewählten Zeit unter der angegebenen Nummer an; die Bestätigung kommt per E-Mail. Kalender lädt nicht? <a id="book" href="#" target="_blank" rel="noopener">Termin in neuem Fenster buchen</a>.</p>
+      </div>
+      <div id="booked-block" hidden style="background:#12120e;border:2px solid #7AD03A;border-radius:10px;padding:22px 24px;">
+        <p class="marker" style="font-size:22px;color:#7AD03A;margin:0 0 8px;">Termin steht.</p>
+        <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">Die Bestätigung mit Datum und Uhrzeit kommt per E-Mail. Roman ruft Sie dann unter der angegebenen Nummer an; danach geht das Musterstück auf den Weg.</p>
       </div>
       <div id="nobook-block" hidden style="background:#12120e;border:2px solid #FFF000;border-radius:10px;padding:22px 24px;">
         <p class="marker" style="font-size:22px;color:#FFF000;margin:0 0 8px;">Roman meldet sich telefonisch.</p>
@@ -114,8 +122,31 @@ gtag('config', 'G-18X7J9MPBW');
     if (contact.firstName) qs.push('firstname=' + encodeURIComponent(contact.firstName));
     if (contact.lastName) qs.push('lastname=' + encodeURIComponent(contact.lastName));
     if (contact.email) qs.push('email=' + encodeURIComponent(contact.email));
-    document.getElementById('book').href = url + (qs.length ? (url.indexOf('?') >= 0 ? '&' : '?') + qs.join('&') : '');
+    var sep = url.indexOf('?') >= 0 ? '&' : '?';
+    var prefilled = url + (qs.length ? sep + qs.join('&') : '');
+    document.getElementById('book').href = prefilled;
+    // The calendar itself sits on this page (HubSpot meetings embed), so the
+    // booking is the step the visitor is standing in, not a click away. The
+    // prefilled link above stays as the fallback for a blocked iframe.
+    var cal = document.getElementById('hs-calendar');
+    cal.setAttribute('data-src', prefilled + (qs.length ? '&' : sep) + 'embed=true');
+    var hs = document.createElement('script');
+    hs.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
+    hs.async = true;
+    document.body.appendChild(hs);
     document.getElementById('book-block').hidden = false;
+    // HubSpot posts {meetingBookSucceeded: true} from the iframe once the
+    // slot is confirmed. That is the real Schedule signal; the anchor-click
+    // tracker below only sees the fallback link.
+    window.addEventListener('message', function (ev) {
+      var d = ev && ev.data;
+      if (!d || typeof d !== 'object' || d.meetingBookSucceeded !== true) return;
+      try { if (window.fbq) window.fbq('track', 'Schedule'); } catch (err) {}
+      try { if (window.gtag) window.gtag('event', 'schedule_booked'); } catch (err) {}
+      document.getElementById('badge').textContent = 'Termin gebucht';
+      document.getElementById('h1text').textContent = 'Danke, der Termin steht.';
+      document.getElementById('booked-block').hidden = false;
+    });
   } else {
     document.getElementById('nobook-block').hidden = false;
   }
