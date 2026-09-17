@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anfrage eingegangen, Gespräch buchen</title>
+<title>Anfrage eingegangen, wir rufen Sie an</title>
 <meta name="robots" content="noindex">
 <script>
 !function(f,b,e,v,n,t,s)
@@ -47,10 +47,6 @@ gtag('config', 'G-18X7J9MPBW');
   .marker{font-family:'Permanent Marker','Marker Felt Wide',cursive;font-weight:400;}
   .btn{display:inline-block;background:#FFF000;color:#0a0a08;text-decoration:none;font-size:18px;font-weight:bold;padding:16px 28px;border-radius:8px;}
   .btn:hover{background:#fff;color:#0a0a08;}
-  /* HubSpot meetings embed. The script sets the iframe's own height; the
-     min-height keeps the page from jumping while it loads. */
-  .meetings-iframe-container{min-height:620px;background:#12120e;border:1px solid #26261e;border-radius:10px;overflow:hidden;}
-  .meetings-iframe-container iframe{display:block;}
 </style>
 </head>
 <body>
@@ -61,28 +57,21 @@ gtag('config', 'G-18X7J9MPBW');
   <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:56px 20px;">
     <div style="max-width:560px;">
       <p id="badge" style="display:inline-block;background:#7AD03A;color:#0a0a08;font-size:14px;letter-spacing:.12em;text-transform:uppercase;padding:6px 12px;border-radius:4px;margin:0 0 20px;">Anfrage eingegangen</p>
-      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Letzter Schritt: Termin mit Roman wählen.</span></h1>
+      <h1 class="marker" style="font-size:clamp(30px,5vw,46px);line-height:1.15;margin:0 0 18px;"><span id="greeting"></span><span id="h1text">Wir rufen Sie persönlich an.</span></h1>
+      <div id="callback-block" style="background:#12120e;border:2px solid #7AD03A;border-radius:10px;padding:22px 24px;margin:0 0 20px;">
+        <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 14px;">Ihre Anfrage liegt bei uns vor. Das LEMONEASY-Team ruft Sie innerhalb der nächsten 2 bis 3 Werktage unter der angegebenen Nummer an. In 10 Minuten klären wir, wer im Haus entscheidet, wo das Stück eingesetzt wird und an welche Adresse das Musterstück geht.</p>
+        <p style="font-size:16px;line-height:1.55;color:#8f8d82;margin:0;">Das Musterstück geht direkt nach diesem Gespräch auf den Weg. Kostenlos, ohne Bestellverpflichtung.</p>
+      </div>
+      <div id="confirm-extra">
       <div style="display:flex;align-items:center;gap:16px;background:#12120e;border:1px solid #26261e;border-radius:10px;padding:16px;margin:0 0 20px;">
-        <img src="../img/roman-lewcke.jpg" alt="Roman Lewcke, Gastro-Vertrieb für LEMONEASY" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
+        <img src="../img/manfred-portrait.jpg" alt="Manfred, Hersteller von LEMONEASY" width="84" height="84" loading="lazy" style="width:84px;height:84px;border-radius:50%;object-fit:cover;display:block;border:2px solid #26261e;flex:0 0 84px;">
         <div>
-          <p style="font-size:18px;font-weight:bold;margin:0;color:#faf9f4;">Roman Lewcke</p>
-          <p style="font-size:15px;color:#8f8d82;margin:2px 0 6px;">Gastronomie und Hotellerie für LEMONEASY</p>
-          <a href="https://www.linkedin.com/in/romanlbinder/" target="_blank" rel="noopener" style="font-size:15px;">Profil auf LinkedIn</a>
+          <p style="font-size:18px;font-weight:bold;margin:0;color:#faf9f4;">LEMONEASY</p>
+          <p style="font-size:15px;color:#8f8d82;margin:2px 0 6px;">Edelstahl-Zitronenpresse, gefertigt in Baden-Württemberg</p>
+          <a href="https://lemoneasy.de" target="_blank" rel="noopener" style="font-size:15px;">lemoneasy.de</a>
         </div>
       </div>
-      <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 28px;">Wählen Sie unten direkt einen Termin. Roman ruft Sie zur gewählten Zeit an und klärt in 10 Minuten, wer im Haus entscheidet, wo das Musterstück eingesetzt wird und an welche Adresse es geht. Das Musterstück geht nach diesem Gespräch raus.</p>
-
-      <div id="book-block" hidden>
-        <div id="hs-calendar" class="meetings-iframe-container"></div>
-        <p style="font-size:14px;color:#8f8d82;margin:16px 0 0;">Roman ruft Sie zur gewählten Zeit unter der angegebenen Nummer an; die Bestätigung kommt per E-Mail. Kalender lädt nicht? <a id="book" href="#" target="_blank" rel="noopener">Termin in neuem Fenster buchen</a>.</p>
-      </div>
-      <div id="booked-block" hidden style="background:#12120e;border:2px solid #7AD03A;border-radius:10px;padding:22px 24px;">
-        <p class="marker" style="font-size:22px;color:#7AD03A;margin:0 0 8px;">Termin steht.</p>
-        <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">Die Bestätigung mit Datum und Uhrzeit kommt per E-Mail. Roman ruft Sie dann unter der angegebenen Nummer an; danach geht das Musterstück auf den Weg.</p>
-      </div>
-      <div id="nobook-block" hidden style="background:#12120e;border:2px solid #FFF000;border-radius:10px;padding:22px 24px;">
-        <p class="marker" style="font-size:22px;color:#FFF000;margin:0 0 8px;">Roman meldet sich telefonisch.</p>
-        <p style="font-size:16px;line-height:1.55;color:#d8d6cc;margin:0;">Ihre Anfrage liegt vor. Roman ruft Sie in den nächsten Werktagen unter der angegebenen Nummer an, um das Gespräch zu führen und den Versand zu klären.</p>
+      <p style="font-size:15px;line-height:1.55;color:#8f8d82;margin:0;">Sie erreichen uns vorab unter <a href="mailto:hallo@lemoneasy.de">hallo@lemoneasy.de</a>.</p>
       </div>
       <div id="notsaved-block" hidden style="background:#12120e;border:2px solid #FFF000;border-radius:10px;padding:22px 24px;">
         <p class="marker" style="font-size:22px;color:#FFF000;margin:0 0 8px;">Die Anfrage ist nicht angekommen.</p>
@@ -99,66 +88,21 @@ gtag('config', 'G-18X7J9MPBW');
   var name = '';
   try { name = new URLSearchParams(window.location.search).get('name') || sessionStorage.getItem('lemoneasy_de_name') || ''; } catch (e) {}
   if (name) document.getElementById('greeting').textContent = 'Danke, ' + name + '. ';
-  // The booking link is whatever /api/lp-optin returned (LEMONEASY_DE_BOOKING_URL
-  // on the server). No link means the env var is not set yet: the page then
-  // confirms the request and promises a call instead of offering one. There
-  // is deliberately NO hardcoded fallback link: which calendar carries these
-  // calls is Roman's decision, and a stale default would book the wrong one.
-  var url = '';
+  // No booking step any more (Daniel Küttner, 2026-09-17): LemonEasy dials
+  // every registration itself within 2 to 3 working days. `bookingUrl` from
+  // /api/lp-optin is ignored on purpose; the lead alert to LemonEasy is what
+  // drives the call now, not a calendar.
   var savedFlag = '';
-  var contact = {};
-  try {
-    url = sessionStorage.getItem('lemoneasy_de_booking') || '';
-    savedFlag = sessionStorage.getItem('lemoneasy_de_saved') || '';
-    contact = JSON.parse(sessionStorage.getItem('lemoneasy_de_contact') || '{}') || {};
-  } catch (e) {}
+  try { savedFlag = sessionStorage.getItem('lemoneasy_de_saved') || ''; } catch (e) {}
   if (savedFlag === '0') {
     // The POST failed: nothing is stored, nobody will call. Say so instead
     // of promising a callback that cannot happen.
     document.getElementById('badge').hidden = true;
     document.getElementById('h1text').textContent = 'Bitte senden Sie die Anfrage noch einmal.';
+    document.getElementById('callback-block').hidden = true;
+    document.getElementById('confirm-extra').hidden = true;
     document.getElementById('notsaved-block').hidden = false;
-  } else if (url && /^https:\/\/meetings\.hubspot\.com\//.test(url)) {
-    // Prefill the HubSpot form so the booking carries the same name and
-    // email as the registration; the server matches bookings to leads on it.
-    var qs = [];
-    if (contact.firstName) qs.push('firstname=' + encodeURIComponent(contact.firstName));
-    if (contact.lastName) qs.push('lastname=' + encodeURIComponent(contact.lastName));
-    if (contact.email) qs.push('email=' + encodeURIComponent(contact.email));
-    var sep = url.indexOf('?') >= 0 ? '&' : '?';
-    var prefilled = url + (qs.length ? sep + qs.join('&') : '');
-    document.getElementById('book').href = prefilled;
-    // The calendar itself sits on this page (HubSpot meetings embed), so the
-    // booking is the step the visitor is standing in, not a click away. The
-    // prefilled link above stays as the fallback for a blocked iframe.
-    var cal = document.getElementById('hs-calendar');
-    cal.setAttribute('data-src', prefilled + (qs.length ? '&' : sep) + 'embed=true');
-    var hs = document.createElement('script');
-    hs.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-    hs.async = true;
-    document.body.appendChild(hs);
-    document.getElementById('book-block').hidden = false;
-    // HubSpot posts {meetingBookSucceeded: true} from the iframe once the
-    // slot is confirmed. That is the real Schedule signal; the anchor-click
-    // tracker below only sees the fallback link.
-    window.addEventListener('message', function (ev) {
-      var d = ev && ev.data;
-      if (!d || typeof d !== 'object' || d.meetingBookSucceeded !== true) return;
-      try { if (window.fbq) window.fbq('track', 'Schedule'); } catch (err) {}
-      try { if (window.gtag) window.gtag('event', 'schedule_booked'); } catch (err) {}
-      document.getElementById('badge').textContent = 'Termin gebucht';
-      document.getElementById('h1text').textContent = 'Der Termin steht.';
-      document.getElementById('booked-block').hidden = false;
-    });
-  } else {
-    document.getElementById('nobook-block').hidden = false;
   }
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*="meetings.hubspot.com"]') : null;
-    if (!a) return;
-    try { if (window.fbq) window.fbq('track', 'Schedule'); } catch (err) {}
-    try { if (window.gtag) window.gtag('event', 'schedule_click'); } catch (err) {}
-  });
 })();
 </script>
 </body>
