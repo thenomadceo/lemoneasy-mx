@@ -258,7 +258,14 @@ gtag('config', 'G-18X7J9MPBW');
       </div>
       <label class="field">Ort<input name="ort" required autocomplete="address-level2" placeholder="Stadt"></label>
       <label class="field">Telefonnummer des Hauses oder Ihre Mobilnummer
-        <input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" minlength="7" placeholder="07161 12345 oder 0151 12345678" title="Vorwahl und Rufnummer">
+        <input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" placeholder="07161 12345 oder 0151 12345678" title="Vorwahl und Rufnummer" aria-describedby="telefon-hint">
+        <!-- Hinweis, keine Sperre. Bis 2026-09-19 hat eine Prüfung im Browser
+             das Absenden bei einer "unpassenden" Nummer blockiert und den Cursor
+             hierher zurückgesetzt, ohne dass der Fehlertext (er stand neben dem
+             Button, außerhalb des Bildschirms) sichtbar war. Echte Besucher
+             haben zweimal getippt und aufgegeben. Der Server lehnt nie eine
+             Nummer ab; er markiert sie nur. Also blockiert die Seite auch nicht. -->
+        <span id="telefon-hint" hidden style="display:block;font-size:14px;color:#FFF000;margin-top:6px;"></span>
       </label>
       <label class="field">E-Mail<input name="email" type="email" required autocomplete="email"></label>
       <label class="field">Warum interessiert Sie LEMONEASY für Ihr Haus?
@@ -318,10 +325,19 @@ gtag('config', 'G-18X7J9MPBW');
 
   function showError(msg) { errEl.textContent = msg; errEl.hidden = false; }
 
-  // Client-side phone floor, same rule the server applies for DE
-  // (validateGermanPhone): 7 to 12 significant digits after +49 and the
-  // trunk 0, no letters, no obvious fake. The server is the authority; this
-  // only stops the obvious typo while the visitor is still here.
+  // Phone HINT, never a gate. Same shape as the server's validateGermanPhone
+  // (7 to 12 significant digits after +49 and the trunk 0, no letters), but
+  // the only thing it does is show a line under the field while the visitor
+  // is typing. The submit path below never reads it. The server is the
+  // authority: it saves every lead and flags an unusable number for the
+  // caller (Daniel sees the raw text on the alert either way).
+  //
+  // Why no gate: until 2026-09-19 this same check blocked the submit, focused
+  // the field, and wrote the error next to the button, which on a phone is
+  // off-screen. Clarity showed a real Instagram visitor (2026-09-17, 8 min,
+  // 26 taps) submit twice, land on this field twice with no visible reason,
+  // and leave. A restaurant that types both numbers ("030 ... oder 0170 ...",
+  // which the label invites) or a "Tel:" prefix failed the check every time.
   function phoneLooksGerman(raw) {
     if (/[a-zA-Z]/.test(String(raw || ''))) return false;
     var d = String(raw || '').replace(/\D/g, '');
@@ -341,22 +357,28 @@ gtag('config', 'G-18X7J9MPBW');
     } catch (e) { return ''; }
   }
 
+  (function () {
+    var tel = form.querySelector('[name="telefon"]');
+    var hint = document.getElementById('telefon-hint');
+    if (!tel || !hint) return;
+    function refresh() {
+      var v = String(tel.value || '');
+      if (!v.trim() || phoneLooksGerman(v)) { hint.hidden = true; hint.textContent = ''; return; }
+      hint.textContent = /[a-zA-Z]/.test(v)
+        ? 'Bitte nur Ziffern, zum Beispiel 07161 12345. Sie können trotzdem absenden.'
+        : 'Bitte mit Vorwahl, zum Beispiel 07161 12345 oder 0151 12345678. Sie können trotzdem absenden.';
+      hint.hidden = false;
+    }
+    tel.addEventListener('blur', refresh);
+    tel.addEventListener('input', function () { if (!hint.hidden) refresh(); });
+  })();
+
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     errEl.hidden = true;
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var fd = new FormData(form);
     var lead = Object.fromEntries(fd.entries());
-    if (!phoneLooksGerman(lead.telefon)) {
-      var tel = form.querySelector('[name="telefon"]');
-      showError(/[a-zA-Z]/.test(String(lead.telefon || ''))
-        ? 'Die Telefonnummer darf nur Ziffern enthalten, zum Beispiel 07161 12345.'
-        : 'Bitte geben Sie eine Telefonnummer mit Vorwahl an, zum Beispiel 07161 12345 oder 0151 12345678.');
-      tel.setAttribute('aria-invalid', 'true');
-      tel.setAttribute('aria-describedby', 'form-error');
-      tel.focus();
-      return;
-    }
     var btn = form.querySelector('button[type="submit"]');
     if (btn.disabled) return;
     btn.disabled = true;
