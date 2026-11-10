@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEMONEASY für Hotels: Hotelkonditionen direkt vom Hersteller (Entwurf)</title>
+<meta name="description" content="Zitronenschieber aus Edelstahl, gefertigt in Baden-Württemberg. Hotelkonditionen ab 10 Stück.">
+<meta name="robots" content="noindex, nofollow">
+<!-- ENTWURF / VORSCHLAG ZUR ABSTIMMUNG. No pixel, no analytics, no live form on purpose. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carme&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#0a0a08;}
+  body{font-family:'Carme',sans-serif;color:#1a1a14;-webkit-font-smoothing:antialiased;min-width:320px;}
+  *,*::before,*::after{box-sizing:border-box;}
+  ::selection{background:#FFF000;color:#0a0a08;}
+  a{color:#1a1a14;text-decoration:underline;text-decoration-color:#FFF000;text-decoration-thickness:2px;}
+  a:hover{color:#000;background:#FFF000;}
+  a.onyellow{color:#0a0a08;text-decoration-color:#0a0a08;}
+  a.onyellow:hover{color:#FFF000;background:#0a0a08;}
+  a.ondark{color:#d8d6cc;}
+  a.ondark:hover{color:#0a0a08;background:#FFF000;}
+  img,video{max-width:100%;}
+  h1,h2{text-wrap:balance;}
+  p{text-wrap:pretty;}
+  input,select,textarea{font-family:'Carme',sans-serif;}
+  input:focus,select:focus,textarea:focus{outline:3px solid #FFF000;outline-offset:0;}
+  a,button{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;}
+  .marker{font-family:'Permanent Marker','Marker Felt Wide',cursive;font-weight:400;}
+  .wrap{max-width:1060px;margin:0 auto;}
+  .narrow{max-width:760px;margin:0 auto;}
+  .eyebrow{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 16px;}
+  .btn{display:inline-block;background:#FFF000;color:#0a0a08;text-decoration:none;font-size:18px;font-weight:bold;padding:16px 28px;border-radius:8px;border:none;cursor:pointer;font-family:'Carme',sans-serif;}
+  .btn:hover{background:#fff;color:#0a0a08;}
+  .card{background:#fff;border:1px solid #e7e4d7;border-radius:10px;padding:20px 22px;box-shadow:0 1px 2px rgba(10,10,8,.04),0 12px 28px -20px rgba(10,10,8,.3);}
+  .card p{margin:0;}
+  .card .t{font-weight:bold;font-size:17px;margin:0 0 6px;}
+  .card .d{font-size:16px;line-height:1.55;color:#454336;}
+  .grid{display:grid;gap:36px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));}
+  .field{display:flex;flex-direction:column;gap:6px;font-size:15px;color:#d8d6cc;}
+  .field input,.field select,.field textarea{background:#fff;border:none;border-radius:6px;padding:14px;font-size:17px;color:#0a0a08;appearance:auto;width:100%;}
+  .field textarea{min-height:88px;resize:vertical;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:520px){.two{grid-template-columns:1fr;}}
+  figure{margin:0;}
+  figcaption{font-size:13px;color:#8f8d82;margin-top:8px;}
+  .legend{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8f8d82;margin:14px 0 0;padding-top:18px;border-top:1px solid #26261e;}
+
+  .draft{position:fixed;left:12px;bottom:12px;z-index:100;background:#FFF000;color:#0a0a08;font-size:13px;font-weight:bold;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.35);}
+  .draftbar{background:#FFF000;color:#0a0a08;text-align:center;font-size:14px;padding:8px 12px;font-weight:bold;}
+  table.packs{width:100%;border-collapse:collapse;font-size:17px;}
+  table.packs th,table.packs td{padding:14px 12px;border-bottom:1px solid #26261e;text-align:left;}
+  table.packs th{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#8f8d82;font-weight:normal;}
+  table.packs td.p{font-weight:bold;color:#FFF000;white-space:nowrap;}
+  .step{display:flex;gap:16px;align-items:flex-start;}
+  .step .n{flex:0 0 40px;height:40px;border-radius:50%;background:#FFF000;color:#0a0a08;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .preview-note{background:#FFF000;color:#0a0a08;border-radius:8px;padding:16px 18px;font-size:16px;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="draftbar">Entwurf / Vorschlag zur Abstimmung. Zahlen und Texte sind ein Vorschlag und können angepasst werden.</div>
+<div class="draft">Entwurf</div>
+<header style="background:#0a0a08;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;position:sticky;top:0;z-index:50;">
+  <img src="img/logo.png" alt="LEMONEASY" style="height:44px;width:auto;display:block;">
+  <a href="#formular" class="btn" style="font-size:15px;padding:11px 18px;white-space:nowrap;">Hotel-Paket bestellen</a>
+</header>
+
+<section style="background:#0a0a08;background-image:radial-gradient(120% 90% at 72% 8%,#17170f 0%,rgba(10,10,8,0) 62%);color:#faf9f4;padding:56px 20px 0;">
+  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:32px;align-items:center;">
+    <div style="padding-bottom:56px;">
+      <p class="eyebrow" style="display:inline-block;background:#FFF000;color:#0a0a08;padding:6px 12px;border-radius:4px;margin-bottom:20px;">Für Hotels</p>
+      <h1 class="marker" style="font-size:clamp(34px,6vw,58px);line-height:1.12;margin:0 0 20px;">Zitronensaft schieben <span style="color:#FFF000;">statt pressen.</span></h1>
+      <p style="font-size:19px;line-height:1.55;color:#d8d6cc;margin:0 0 28px;max-width:46ch;">Für Hotels, die beim Detail nicht sparen. LEMONEASY aus Edelstahl am Frühstücksbuffet, beim Room Service und beim Bankett. Keine Kerne im Tee, keine klebrigen Finger.</p>
+      <a href="#konditionen" class="btn">Hotelkonditionen ansehen</a>
+      <p style="font-size:14px;color:#8f8d82;margin:14px 0 0;">Direkt vom Hersteller. Ab 10 Stück, ab 19,90 EUR netto pro Stück.</p>
+    </div>
+    <div style="align-self:end;display:flex;justify-content:center;position:relative;padding-bottom:40px;">
+      <img src="img/hero-zitronenbett.jpg" alt="LEMONEASY Zitronenschieber aus Edelstahl auf Zitronen" style="width:100%;max-width:460px;border-radius:14px;display:block;box-shadow:0 24px 48px -16px rgba(0,0,0,.7);">
+      <img src="img/made-in-germany.png" alt="Made in Germany Siegel" width="128" height="128" style="position:absolute;top:-8px;right:6px;width:clamp(88px,13vw,128px);height:auto;display:block;">
+    </div>
+  </div>
+</section>
+
+<section style="background:#faf9f4;padding:72px 20px;">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#7a7768;">Wo LEMONEASY im Hotel arbeitet</p>
+    <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 32px;color:#0a0a08;">Überall, wo Ihre Gäste Zitrone bekommen.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:14px;">
+      <div class="card"><p class="t">Frühstücksbuffet</p><p class="d">Neben Tee und Wasser. Gäste bedienen sich selbst, ohne Kerne in der Tasse.</p></div>
+      <div class="card"><p class="t">Room Service und Lounge</p><p class="d">Ein Stück Edelstahl auf dem Tablett wirkt wertiger als eine Zitronenecke.</p></div>
+      <div class="card"><p class="t">Bankett und Tagung</p><p class="d">Einheitlich auf allen Tischen, spülmaschinenfest, schnell eingedeckt.</p></div>
+      <div class="card"><p class="t">Restaurant und Bar im Haus</p><p class="d">Fisch, Schnitzel, Tee und Drinks. Der Gast dosiert selbst.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px;margin-top:32px;">
+      <figure><img src="img/tisch.jpg" alt="Gedeckter Tisch mit LEMONEASY" style="width:100%;border-radius:10px;display:block;"><figcaption>Am gedeckten Tisch: der Gast dosiert selbst, ohne die Frucht anzufassen.</figcaption></figure>
+      <figure><img src="img/fischteller.jpg" alt="Fischteller mit LEMONEASY" style="width:100%;border-radius:10px;display:block;"><figcaption>Am Teller: die Scheibe liegt im Schieber, der Saft geht auf den Fisch.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="background:#0a0a08;color:#faf9f4;padding:72px 20px;border-top:1px solid #1c1c15;">
+  <div class="wrap grid">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <img src="img/product-top.jpg" alt="LEMONEASY von oben mit Zitronenscheibe" style="width:100%;border-radius:10px;display:block;background:#fff;">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <p class="eyebrow" style="color:#FFF000;">Was auf Ihre Tische kommt</p>
+      <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 8px;">Zwei Teile Edelstahl, keine Einweisung.</h2>
+      <div class="card"><p class="t">Schieben statt pressen</p><p class="d">Scheibe einlegen, schieben, der Saft läuft gerichtet aus. Ohne die großen Kerne.</p></div>
+      <div class="card"><p class="t">Edelstahl, spülmaschinenfest</p><p class="d">Nach dem Service mit dem Besteck in die Maschine. Nichts bricht, nichts geht verloren.</p></div>
+      <div class="card"><p class="t">Klein wie ein Salzstreuer</p><p class="d">119 Gramm, 10 mal 7 Zentimeter. Passt auf jedes Tablett und jedes Buffet.</p></div>
+      <div class="card"><p class="t">Bekannt aus dem Handel</p><p class="d">Im LEMONEASY Shop für 32,95 EUR inkl. MwSt., auch auf Amazon.de erhältlich.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="konditionen" style="background:#0a0a08;color:#faf9f4;padding:72px 20px;border-top:1px solid #1c1c15;">
+  <div class="narrow">
+    <p class="eyebrow" style="color:#FFF000;">Hotelkonditionen</p>
+    <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 16px;">Hotelpreise direkt vom Hersteller.</h2>
+    <p style="font-size:18px;line-height:1.6;color:#d8d6cc;margin:0 0 24px;">Im Shop kostet LEMONEASY 32,95 EUR inkl. MwSt. Für Hotels gelten feste Paketpreise. Je größer das Paket, desto günstiger das Stück.</p>
+    <table class="packs">
+      <tr><th>Paket</th><th>Preis pro Stück, netto</th><th>Paketpreis, netto</th></tr>
+      <tr><td>10er-Paket</td><td class="p">24,90 EUR</td><td>249,00 EUR</td></tr>
+      <tr><td>25er-Paket</td><td class="p">21,90 EUR</td><td>547,50 EUR</td></tr>
+      <tr><td>50er-Paket</td><td class="p">19,90 EUR</td><td>995,00 EUR</td></tr>
+    </table>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:16px;line-height:1.55;color:#d8d6cc;margin-top:22px;">
+      <p style="margin:0;"><b style="color:#faf9f4;">Versand:</b> Ab dem 25er-Paket versandkostenfrei innerhalb Deutschlands. Das 10er-Paket zzgl. Versand.</p>
+      <p style="margin:0;"><b style="color:#faf9f4;">Modell:</b> LEMONEASY 9,7 cm. Alle Preise zzgl. MwSt.</p>
+      <p style="margin:0;"><b style="color:#faf9f4;">Mit Ihrem Logo:</b> Ab 25 Stück lasern wir Ihr Hotellogo auf jedes Stück. Preis auf Anfrage.</p>
+      <p style="margin:0;"><b style="color:#faf9f4;">Mehrere Häuser oder Hotelgruppe:</b> Sprechen Sie uns an, wir machen Ihnen ein Angebot.</p>
+    </div>
+  </div>
+</section>
+<section style="background:#faf9f4;padding:72px 20px;">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:40px;align-items:center;">
+      <figure>
+        <img src="img/manfred-workshop.jpg" alt="Manfred, der Gründer, in der Fertigung" style="width:100%;border-radius:10px;display:block;">
+        <figcaption style="font-size:14px;margin-top:10px;">Manfred, der Gründer, in der eigenen Fertigung.</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow" style="color:#7a7768;">100% made in Germany, 100% menschlich</p>
+        <h2 class="marker" style="font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 20px;color:#0a0a08;">Ein Hersteller mit Namen und Gesicht.</h2>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0 0 14px;">LEMONEASY wird in Baden-Württemberg gefertigt, mit eigenem Werkzeug. Kein anonymer Katalog, kein Callcenter.</p>
+        <p style="font-size:18px;line-height:1.6;color:#454336;margin:0;">Sie sprechen mit Peter Dreverhoff, unserem Ansprechpartner für Gastronomie und Hotellerie. Fragen, Nachbestellungen und Wünsche landen bei Menschen, auf Deutsch.</p>
+        <div style="display:flex;align-items:center;gap:16px;margin-top:26px;">
+          <img src="img/made-in-germany.png" alt="Made in Germany Siegel" width="96" height="96" style="width:96px;height:96px;display:block;flex:0 0 96px;">
+          <p style="margin:0;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#7a7768;line-height:1.5;">Baden-Württemberg<br>Deutschland</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formular" style="background:#0a0a08;background-image:radial-gradient(110% 70% at 50% 0%,#16160f 0%,rgba(10,10,8,0) 60%);color:#faf9f4;padding:72px 20px 88px;border-top:1px solid #1c1c15;">
+  <div style="max-width:560px;margin:0 auto;">
+    <h2 class="marker" style="font-size:clamp(28px,4vw,40px);line-height:1.2;margin:0 0 12px;">Hotel-Paket bestellen.</h2>
+    <p style="font-size:17px;line-height:1.55;color:#d8d6cc;margin:0 0 28px;">Wählen Sie Ihr Paket. Peter Dreverhoff meldet sich innerhalb von 24 Stunden zur Bestellbestätigung. Die Rechnung kommt per Shopify.</p>
+    <form id="lead-form" novalidate style="display:flex;flex-direction:column;gap:18px;">
+      <div class="two"><label class="field">Vorname<input name="firstName" required autocomplete="given-name"></label><label class="field">Nachname<input name="lastName" required autocomplete="family-name"></label></div>
+      <label class="field">Firma<input name="firma" required autocomplete="organization"></label>
+      <label class="field">Name des Hotels<input name="hotel" required ></label>
+      <div class="two"><label class="field">Ihre Rolle<select name="rolle" required><option value="">Bitte wählen</option><option value="inhaber">Inhaber / Inhaberin</option><option value="direktion">Direktion</option><option value="fb">F&amp;B-Leitung</option><option value="bankett">Bankettleitung</option><option value="einkauf">Einkauf</option><option value="sonstiges">Sonstiges</option></select></label><label class="field">Paket<select name="paket" required><option value="">Bitte wählen</option><option value="10">10er-Paket, 24,90 EUR/Stk</option><option value="25">25er-Paket, 21,90 EUR/Stk</option><option value="50">50er-Paket, 19,90 EUR/Stk</option><option value="mehr">Mehr als 50 / mehrere Häuser</option></select></label></div>
+      <div class="two"><label class="field">E-Mail<input name="email" required type="email" autocomplete="email"></label><label class="field">Telefon<input name="telefon" required type="tel" autocomplete="tel"></label></div>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#d8d6cc;"><input type="checkbox" name="gravur" value="ja" style="margin-top:4px;"> Ich möchte ein Angebot für die Logo-Gravur (ab 25 Stück).</label>
+      <button type="submit" class="btn">Hotel-Paket bestellen</button>
+      <p style="font-size:14px;color:#8f8d82;margin:0;">Die Bestellung wird erst nach dem Gespräch mit Peter verbindlich.</p>
+      <div id="preview-note" class="preview-note" hidden><b>Vorschau:</b> Dies ist ein Entwurf zur Abstimmung. Es wurde nichts gesendet. Im Live-Betrieb ruft Peter Dreverhoff innerhalb von 24 Stunden an.</div>
+    </form>
+  </div>
+</section>
+<footer style="background:#0a0a08;color:#8f8d82;padding:28px 20px;font-size:13px;text-align:center;border-top:1px solid #1c1c15;">LEMONEASY, 100% made in Germany, 100% menschlich. Entwurf / Vorschlag zur Abstimmung.</footer>
+<script>
+/* PREVIEW ONLY. Same payload shape as the live lp-optin pattern
+   (POST https://www.founderscale.ceo/api/lp-optin, client 'lemoneasy', asset 'hotel-bestellung'),
+   but PREVIEW = true: nothing is sent, no lead is created. */
+(function () {
+  var PREVIEW = true;
+  var API = 'https://www.founderscale.ceo/api/lp-optin';
+  var form = document.getElementById('lead-form');
+  var note = document.getElementById('preview-note');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var lead = Object.fromEntries(new FormData(form).entries());
+    var payload = { client: 'lemoneasy', asset: 'hotel-bestellung', preview: true, sourceUrl: window.location.href, firstName: lead.firstName, lastName: lead.lastName, firma: lead.firma, hotel: lead.hotel, rolle: lead.rolle, paket: lead.paket, email: lead.email, telefon: lead.telefon, gravur: lead.gravur };
+    if (PREVIEW) { note.hidden = false; note.scrollIntoView({behavior:'smooth', block:'center'}); console.log('preview payload (not sent)', API, payload); return; }
+  });
+})();
+</script>
+</body>
+</html>
