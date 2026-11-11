@@ -349,7 +349,9 @@
     gap: 12px;
     font-size: 0.98rem;
   }
-  .pack-total strong { font-family: var(--font-head); font-weight: 700; color: var(--black); font-size: 1.1rem; white-space: nowrap; }
+  .pack-total strong { font-family: var(--font-head); font-weight: 700; color: var(--black); font-size: 1.1rem; text-align: right; }
+  .pack-total strong small, .anchor-old + .vat-hint { font-family: var(--font-body); font-weight: 400; font-size: 0.8rem; color: var(--grey); white-space: nowrap; }
+  .anchor-compare .vat-hint { display: block; margin-top: 8px; color: var(--grey-on-dark); }
   .pack .btn { margin-top: auto; }
   .pack-note {
     margin-top: 22px;
@@ -599,7 +601,7 @@
         <p class="lead">Für Hotelmanager und Küchenchefs, die beim Detail nicht sparen. LEMONEASY aus Edelstahl am Frühstücksbuffet, beim Room Service und beim Bankett. Keine Kerne im Tee, keine klebrigen Finger.</p>
         <div class="hero-cta">
           <a class="btn btn--primary" href="#konditionen">Gastro-Sonderpreis ansehen <span class="arrow" aria-hidden="true">→</span></a>
-          <p class="hero-note">Direkt vom Hersteller. <strong>Ab 10 Stück, ab 17,00 EUR pro Stück.</strong></p>
+          <p class="hero-note">Direkt vom Hersteller. <strong>Ab 10 Stück, ab 17,00 EUR pro Stück inkl. MwSt.</strong></p>
         </div>
       </div>
       <figure class="hero-media">
@@ -691,7 +693,7 @@
             <span class="tick" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span>
             <div>
               <h3>Bekannt aus dem Handel</h3>
-              <p>Im LEMONEASY Shop für 32,95 EUR inkl. MwSt., auf Amazon.de für 34,99 EUR (Stand 10. November 2026).</p>
+              <p>Im LEMONEASY Shop für 32,95 EUR inkl. MwSt., auf Amazon.de für 34,99 EUR inkl. MwSt. (Stand 10. November 2026).</p>
             </div>
           </li>
         </ul>
@@ -704,14 +706,14 @@
       <div class="section-head">
         <p class="eyebrow">Hotelkonditionen</p>
         <h2 id="konditionen-title">Gastro-Sonderpreis direkt vom Hersteller.</h2>
-        <p class="lead">Privatkunden zahlen LEMONEASY im eigenen Shop 32,95 EUR inkl. MwSt. Auf Amazon.de steht das Stück derzeit bei 34,99 EUR. Für Hotels gelten feste Paketpreise, deutlich darunter. Je größer das Paket, desto günstiger das Stück.</p>
+        <p class="lead">Privatkunden zahlen LEMONEASY im eigenen Shop 32,95 EUR inkl. MwSt. Auf Amazon.de steht das Stück derzeit bei 34,99 EUR inkl. MwSt. Für Hotels gelten feste Paketpreise inkl. MwSt., deutlich darunter. Je größer das Paket, desto günstiger das Stück.</p>
       </div>
 
       <div class="anchor" role="group" aria-label="Preisvergleich">
         <div class="anchor-compare">
           <div>
             <span class="anchor-label">Amazon.de</span>
-            <s class="anchor-old">34,99 EUR</s>
+            <s class="anchor-old">34,99 EUR</s> <small class="vat-hint">inkl. MwSt.</small>
           </div>
           <div class="anchor-shop">
             <span class="anchor-label">LEMONEASY Shop</span>
@@ -721,7 +723,7 @@
         <div class="anchor-deal">
           <span class="anchor-label">Gastro-Sonderpreis</span>
           <p class="anchor-new"><span class="ab">ab</span> <span class="amount">17,00<span class="cur">EUR</span></span></p>
-          <p class="anchor-unit">pro Stück</p>
+          <p class="anchor-unit">pro Stück inkl. MwSt.</p>
         </div>
       </div>
       <p class="source">Amazon-Preis und Bewertung: <a href="https://www.amazon.de/dp/B0C8SNPQ52" target="_blank" rel="nofollow noopener">LEMONEASY auf Amazon.de</a>, Stand 10. November 2026. <span class="keep">Shop-Preis geprüft am 11. November 2026.</span></p>
@@ -735,31 +737,31 @@
         <li class="pack">
           <h3 class="pack-name">10er-Paket</h3>
           <span class="pack-ship">zzgl. Versand</span>
-          <p class="pack-unit"><span class="amount">22,90<span class="cur">EUR</span></span> <span class="per">pro Stück</span></p>
-          <p class="pack-total"><span>Paketpreis</span> <strong>229,00 EUR</strong></p>
+          <p class="pack-unit"><span class="amount">22,90<span class="cur">EUR</span></span> <span class="per">pro Stück inkl. MwSt.</span></p>
+          <p class="pack-total"><span>Paketpreis</span> <strong>229,00 EUR <small>inkl. MwSt.</small></strong></p>
           <a class="btn btn--primary btn--block" href="https://lemoneasy.de/products/lemoneasy" target="_blank" rel="nofollow noopener">10er-Paket im Shop bestellen</a>
         </li>
         <li class="pack">
           <h3 class="pack-name">25er-Paket</h3>
           <span class="pack-ship pack-ship--free">versandkostenfrei innerhalb Deutschlands</span>
-          <p class="pack-unit"><span class="amount">19,90<span class="cur">EUR</span></span> <span class="per">pro Stück</span></p>
-          <p class="pack-total"><span>Paketpreis</span> <strong>497,50 EUR</strong></p>
+          <p class="pack-unit"><span class="amount">19,90<span class="cur">EUR</span></span> <span class="per">pro Stück inkl. MwSt.</span></p>
+          <p class="pack-total"><span>Paketpreis</span> <strong>497,50 EUR <small>inkl. MwSt.</small></strong></p>
           <a class="btn btn--primary btn--block" href="https://lemoneasy.de/products/lemoneasy" target="_blank" rel="nofollow noopener">25er-Paket im Shop bestellen</a>
         </li>
         <li class="pack pack--top">
           <h3 class="pack-name">50er-Paket</h3>
           <span class="pack-ship pack-ship--free">versandkostenfrei innerhalb Deutschlands</span>
-          <p class="pack-unit"><span class="amount">17,00<span class="cur">EUR</span></span> <span class="per">pro Stück</span></p>
-          <p class="pack-total"><span>Paketpreis</span> <strong>850,00 EUR</strong></p>
+          <p class="pack-unit"><span class="amount">17,00<span class="cur">EUR</span></span> <span class="per">pro Stück inkl. MwSt.</span></p>
+          <p class="pack-total"><span>Paketpreis</span> <strong>850,00 EUR <small>inkl. MwSt.</small></strong></p>
           <a class="btn btn--primary btn--block" href="https://lemoneasy.de/products/lemoneasy" target="_blank" rel="nofollow noopener">50er-Paket im Shop bestellen</a>
         </li>
       </ul>
-      <p class="pack-note">Die Paket-Artikel im Shop werden noch angelegt. Der Button führt derzeit zur Produktseite LEMONEASY 9,7 cm (32,95 EUR).</p>
+      <p class="pack-note">Die Mengenrabatte im Shop werden noch angelegt. Der Button führt derzeit zur Produktseite LEMONEASY 9,7 cm (32,95 EUR inkl. MwSt.). Sobald die Rabatte aktiv sind, legen die Buttons 10, 25 oder 50 Stück zum Hotelpreis in den Warenkorb.</p>
 
       <div class="shop-info">
         <ul class="terms">
           <li><strong>Versand:</strong> Ab dem 25er-Paket versandkostenfrei innerhalb Deutschlands. Das 10er-Paket zzgl. Versand.</li>
-          <li><strong>Modell:</strong> LEMONEASY 9,7 cm.</li>
+          <li><strong>Modell:</strong> LEMONEASY 9,7 cm. Alle Hotelpreise inkl. MwSt.</li>
           <li>Gravur/Logo auf Anfrage.</li>
           <li><strong>Mehrere Häuser oder Hotelgruppe:</strong> Sprechen Sie uns an, wir machen Ihnen ein Angebot.</li>
         </ul>
