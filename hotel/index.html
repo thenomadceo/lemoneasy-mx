@@ -471,6 +471,21 @@
   .check input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--black); }
   .form-actions { margin-top: 20px; }
   .form-hint { font-size: 0.86rem; margin-top: 12px; }
+  .form-hint a { text-decoration: underline; text-underline-offset: 2px; }
+  .form-error {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--red);
+    line-height: 1.45;
+  }
+  .form-error[hidden] { display: none; }
+  .tel-hint {
+    font-size: 0.86rem;
+    color: var(--grey);
+    line-height: 1.4;
+  }
+  .tel-hint[hidden] { display: none; }
   .preview-note {
     margin-top: 16px;
     padding: 14px 16px;
@@ -912,59 +927,63 @@
     <div class="wrap talk-grid">
       <div class="section-head">
         <h2 id="gespraech-title">Kurzgespräch mit Peter buchen.</h2>
-        <p class="lead">Sie haben Fragen, möchten eine Gravur oder bestellen größere Mengen? Peter Dreverhoff ruft Sie zurück. Das Rückrufformular ist noch nicht aktiv.</p>
+        <p class="lead">Sie haben Fragen, möchten eine Gravur oder bestellen größere Mengen? Peter Dreverhoff ruft Sie zurück.</p>
       </div>
-      <form class="form-card" id="peter-form" novalidate onsubmit="return false">
-        <fieldset disabled>
-          <div class="fields">
-            <div class="field">
-              <label for="f-vorname">Vorname</label>
-              <input id="f-vorname" type="text" autocomplete="off">
-            </div>
-            <div class="field">
-              <label for="f-nachname">Nachname</label>
-              <input id="f-nachname" type="text" autocomplete="off">
-            </div>
-            <div class="field field--full">
-              <label for="f-hotel">Name des Hotels</label>
-              <input id="f-hotel" type="text" autocomplete="off">
-            </div>
-            <div class="field field--full">
-              <label for="f-rolle">Ihre Rolle</label>
-              <select id="f-rolle">
-                <option value="" selected>Bitte wählen</option>
-                <option>Inhaber / Inhaberin</option>
-                <option>Direktion</option>
-                <option>F&amp;B-Leitung</option>
-                <option>Bankettleitung</option>
-                <option>Einkauf</option>
-                <option>Küchenchef / Küchenchefin</option>
-                <option>Sonstiges</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="f-mail">E-Mail</label>
-              <input id="f-mail" type="email" autocomplete="off">
-            </div>
-            <div class="field">
-              <label for="f-tel">Telefon</label>
-              <input id="f-tel" type="tel" autocomplete="off">
-            </div>
-            <div class="field field--full">
-              <label for="f-nachricht">Nachricht (optional)</label>
-              <textarea id="f-nachricht" rows="3"></textarea>
-            </div>
-            <label class="check field--full" for="f-gravur">
-              <input id="f-gravur" type="checkbox">
-              <span>Ich möchte ein Angebot für Gravur/Logo auf Anfrage.</span>
-            </label>
+      <form class="form-card" id="peter-form" novalidate>
+        <div class="fields" id="peter-fields">
+          <div class="field">
+            <label for="f-vorname">Vorname</label>
+            <input id="f-vorname" name="firstName" type="text" autocomplete="given-name" required>
           </div>
-        </fieldset>
-        <div class="form-actions">
-          <button class="btn btn--primary btn--block" type="submit">Rückruf anfragen</button>
-          <p class="form-hint">Das Formular ist noch nicht aktiv. Es wird nichts gesendet. Ein Buchungslink für Peter liegt noch nicht vor.</p>
-          <p class="preview-note" id="preview-note" role="status" aria-live="polite" hidden>Das Formular ist noch nicht aktiv. Es wurde nichts gesendet.</p>
+          <div class="field">
+            <label for="f-nachname">Nachname</label>
+            <input id="f-nachname" name="lastName" type="text" autocomplete="family-name" required>
+          </div>
+          <div class="field field--full">
+            <label for="f-hotel">Name des Hotels</label>
+            <input id="f-hotel" name="hotel" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field field--full">
+            <label for="f-rolle">Ihre Rolle</label>
+            <select id="f-rolle" name="rolle" required>
+              <option value="" selected disabled>Bitte wählen</option>
+              <option value="inhaber">Inhaber / Inhaberin</option>
+              <option value="direktion">Direktion</option>
+              <option value="fb-leitung">F&amp;B-Leitung</option>
+              <option value="bankettleitung">Bankettleitung</option>
+              <option value="einkauf">Einkauf</option>
+              <option value="kuechenchef">Küchenchef / Küchenchefin</option>
+              <option value="sonstiges">Sonstiges</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-mail">E-Mail</label>
+            <input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+          <div class="field">
+            <label for="f-tel">Telefon</label>
+            <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required placeholder="0711 123456 oder 0170 1234567" title="Vorwahl und Rufnummer">
+            <span id="telefon-hint" class="tel-hint" role="status" hidden></span>
+          </div>
+          <div class="field field--full">
+            <label for="f-nachricht">Nachricht (optional)</label>
+            <textarea id="f-nachricht" name="nachricht" rows="3"></textarea>
+          </div>
+          <label class="check field--full" for="f-gravur">
+            <input id="f-gravur" name="gravur" type="checkbox" value="ja">
+            <span>Ich möchte ein Angebot für Gravur/Logo auf Anfrage.</span>
+          </label>
         </div>
+        <div class="hp" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+          <label for="f-website">Bitte nicht ausfüllen</label>
+          <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="form-actions" id="peter-actions">
+          <button class="btn btn--primary btn--block" id="peter-submit" type="submit">Rückruf anfragen</button>
+          <p class="form-hint">Wir verwenden Ihre Angaben nur für den Rückruf. Kein Newsletter. Details in der <a href="https://lemoneasy.de/policies/privacy-policy" target="_blank" rel="noopener">Datenschutzerklärung</a>.</p>
+          <p class="form-error" id="form-error" role="alert" hidden></p>
+        </div>
+        <p class="preview-note" id="peter-thanks" role="status" tabindex="-1" hidden>Vielen Dank. Ihre Rückrufanfrage ist eingegangen. Peter Dreverhoff ruft Sie zurück.</p>
       </form>
     </div>
   </section>
@@ -1013,15 +1032,199 @@
 </footer>
 
 <script>
+(function () {
+  var form = document.getElementById('peter-form');
+  if (!form) return;
+  var errEl = document.getElementById('form-error');
+  var btn = document.getElementById('peter-submit');
+  var thanks = document.getElementById('peter-thanks');
+  var fields = document.getElementById('peter-fields');
+  var actions = document.getElementById('peter-actions');
+  var API = 'https://www.founderscale.ceo/api/lp-optin';
+  var sending = false;
+
+  function showError(msg, focusEl) {
+    errEl.textContent = msg;
+    errEl.hidden = false;
+    if (focusEl && focusEl.focus) focusEl.focus();
+  }
+
+  function setSending(on) {
+    sending = on;
+    btn.disabled = on;
+    btn.textContent = on ? 'Wird gesendet...' : 'Rückruf anfragen';
+  }
+
+  function significantDigits(raw) {
+    var d = String(raw || '').replace(/\D/g, '');
+    if (d.indexOf('00') === 0) d = d.slice(2);
+    if (d.indexOf('49') === 0 && d.length > 9) d = d.slice(2);
+    if (d.charAt(0) === '0') d = d.slice(1);
+    return d;
+  }
+
+  function phoneLooksGerman(raw) {
+    if (/[a-zA-Z]/.test(String(raw || ''))) return false;
+    var d = significantDigits(raw);
+    if (d.length < 7 || d.length > 12) return false;
+    if (d.charAt(0) === '0') return false;
+    if (/^(\d)\1+$/.test(d)) return false;
+    return true;
+  }
+
+  function readCookie(k) {
+    try {
+      var m = document.cookie.match(new RegExp('(^|; )' + k + '=([^;]*)'));
+      return m ? decodeURIComponent(m[2]) : '';
+    } catch (e) { return ''; }
+  }
+
+  function field(name) {
+    var el = form.elements[name];
+    if (!el) return '';
+    if (el.type === 'checkbox') return el.checked ? String(el.value || 'ja') : '';
+    return String(el.value || '').trim();
+  }
+
+  function rolleLabel() {
+    var el = form.elements.rolle;
+    if (!el || !el.selectedIndex) return field('rolle');
+    var opt = el.options[el.selectedIndex];
+    return opt ? String(opt.text || '').trim() : field('rolle');
+  }
+
   (function () {
-    var form = document.getElementById('peter-form');
-    var note = document.getElementById('preview-note');
-    if (!form || !note) { return; }
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      note.hidden = false;
-    });
+    var tel = form.elements.telefon;
+    var hint = document.getElementById('telefon-hint');
+    if (!tel || !hint) return;
+    function refresh() {
+      var v = String(tel.value || '');
+      if (!v.trim() || phoneLooksGerman(v) || phoneLooksGerman(v.replace(/[a-zA-Z]/g, ''))) {
+        hint.hidden = true;
+        hint.textContent = '';
+        return;
+      }
+      var n = significantDigits(v).length;
+      var msg = n < 7
+        ? 'Bitte mit Vorwahl, zum Beispiel 0711 123456 oder 0170 1234567. Sie können trotzdem absenden.'
+        : 'Wir rufen Sie unter dieser Nummer an. Bitte prüfen Sie die Nummer kurz. Sie können trotzdem absenden.';
+      if (hint.textContent !== msg) hint.textContent = msg;
+      hint.hidden = false;
+    }
+    tel.addEventListener('blur', refresh);
+    tel.addEventListener('input', function () { if (!hint.hidden) refresh(); });
   })();
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sending) return;
+    errEl.hidden = true;
+    errEl.textContent = '';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    var lead = {
+      firstName: field('firstName'),
+      lastName: field('lastName'),
+      hotel: field('hotel'),
+      rolle: rolleLabel(),
+      email: field('email'),
+      telefon: field('telefon'),
+      nachricht: field('nachricht'),
+      gravur: field('gravur'),
+      website: field('website')
+    };
+
+    if (typeof window.fetch !== 'function') {
+      showError('Ihre Anfrage konnte von diesem Browser nicht gesendet werden. Bitte aktualisieren Sie ihn oder versuchen Sie es mit einem anderen Gerät.');
+      return;
+    }
+
+    var payload, eventId;
+    try {
+      var qs = new URLSearchParams(window.location.search);
+      var utm = {};
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'].forEach(function (k) {
+        var val = qs.get(k);
+        if (val) utm[k] = val;
+      });
+      var fbclid = qs.get('fbclid');
+      var fbc = readCookie('_fbc') || (fbclid ? 'fb.1.' + Date.now() + '.' + fbclid : '');
+      var fbp = readCookie('_fbp');
+      try {
+        eventId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(36).slice(2);
+      } catch (err) {
+        eventId = String(Date.now()) + Math.random().toString(36).slice(2);
+      }
+      payload = JSON.stringify({
+        client: 'lemoneasy',
+        asset: 'de-hotel-callback',
+        email: lead.email,
+        firstName: lead.firstName,
+        lastName: lead.lastName,
+        sourceUrl: window.location.href,
+        utm: utm,
+        hotel: lead.hotel,
+        haus: lead.hotel,
+        rolle: lead.rolle,
+        telefon: lead.telefon,
+        gravur: lead.gravur || 'nein',
+        note: lead.nachricht || null,
+        website: lead.website,
+        eventId: eventId,
+        fbc: fbc,
+        fbp: fbp
+      });
+    } catch (err) {
+      showError('Ihre Anfrage konnte nicht vorbereitet werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.');
+      return;
+    }
+
+    setSending(true);
+
+    var opts = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: payload };
+    var timer = null;
+    try {
+      if (window.AbortController) {
+        var ctrl = new AbortController();
+        opts.signal = ctrl.signal;
+        timer = setTimeout(function () { try { ctrl.abort(); } catch (e2) {} }, 15000);
+      }
+    } catch (err) {}
+
+    var request;
+    try {
+      request = fetch(API, opts);
+    } catch (err) {
+      if (timer) clearTimeout(timer);
+      setSending(false);
+      showError('Ihre Anfrage konnte nicht gesendet werden. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.');
+      return;
+    }
+
+    request
+      .then(function (res) { return res.json().catch(function () { return {}; }); })
+      .catch(function () { return {}; })
+      .then(function (data) {
+        if (timer) clearTimeout(timer);
+        var saved = !!(data && data.saved === true);
+        if (!saved) {
+          setSending(false);
+          showError('Ihre Anfrage konnte gerade nicht gespeichert werden. Bitte versuchen Sie es in einem Moment erneut.');
+          return;
+        }
+        if (fields) fields.hidden = true;
+        if (actions) actions.hidden = true;
+        if (thanks) {
+          thanks.hidden = false;
+          if (thanks.focus) thanks.focus();
+        }
+      });
+  });
+})();
 </script>
 </body>
 </html>
