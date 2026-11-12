@@ -392,6 +392,50 @@
   }
   .text-link:hover { text-decoration-color: var(--black); }
 
+
+  /* Team */
+  .team-grid { display: grid; grid-template-columns: 1fr; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .team-card { margin: 0; }
+  .team-card img,
+  .team-mono {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 18%;
+    border-radius: 22px;
+    background: #ece9de;
+  }
+  .team-mono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 8vw, 3.4rem);
+    letter-spacing: 0.04em;
+    color: var(--black);
+    background:
+      linear-gradient(180deg, #fffef6 0%, #f3f0e4 100%);
+    border: 1px solid var(--line);
+  }
+  .team-card figcaption { margin-top: 14px; }
+  .team-card strong {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -0.01em;
+  }
+  .team-card span {
+    display: block;
+    margin-top: 4px;
+    color: var(--grey);
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
   /* Maker */
   .maker-grid { display: grid; gap: 36px; align-items: center; }
   .maker-photo { margin: 0; }
@@ -497,6 +541,7 @@
     .cards { grid-template-columns: repeat(2, 1fr); }
     .photo-pair { grid-template-columns: repeat(2, 1fr); }
     .ig-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .team-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .fields { grid-template-columns: repeat(2, 1fr); }
     .field--full { grid-column: 1 / -1; }
     .form-card { padding: 32px; }
@@ -535,6 +580,7 @@
     .shop-info { grid-template-columns: 1.4fr 1fr; gap: 48px; margin-top: 52px; align-items: start; }
     .reviews { grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .ig-grid { grid-template-columns: repeat(6, 1fr); }
+    .team-grid { gap: 24px; }
     .maker-grid { grid-template-columns: 0.8fr 1fr; gap: 80px; }
     .talk-grid { grid-template-columns: 0.85fr 1fr; gap: 72px; }
     .talk-grid .section-head { position: sticky; top: calc(var(--header-h) + 32px); margin-bottom: 0; }
@@ -800,6 +846,46 @@
         <li><a href="https://www.instagram.com/p/DfEop6sAecO/" target="_blank" rel="nofollow noopener"><img src="img/ig-06.jpg" alt="Beitrag von @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
       </ul>
       <a class="text-link" href="https://www.instagram.com/lemoneasy.official/" target="_blank" rel="nofollow noopener">Zum Instagram-Profil <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+
+  <section class="section" id="team" aria-labelledby="team-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Das Team</p>
+        <h2 id="team-title">Menschen hinter der Marke.</h2>
+        <p class="lead">LEMONEASY kommt aus Baden-Württemberg. Hinter dem Produkt stehen echte Leute, nicht ein anonymer Katalog.</p>
+      </div>
+      <ul class="team-grid">
+        <li>
+          <figure class="team-card">
+            <img src="/img/team/manfred-hoenes.jpg" alt="Manfred Hönes, Erfinder und Gründer von LEMONEASY" width="800" height="1000" loading="lazy">
+            <figcaption>
+              <strong>Manfred Hönes</strong>
+              <span>Erfinder und Gründer</span>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="team-card">
+            <img src="/img/team/daniel-kuettner.jpg" alt="Daniel Küttner von LEMONEASY" width="576" height="720" loading="lazy">
+            <figcaption>
+              <strong>Daniel Küttner</strong>
+              <span>LEMONEASY</span>
+            </figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure class="team-card">
+            <div class="team-mono" aria-hidden="true">NG</div>
+            <figcaption>
+              <strong>Natalie Geiger</strong>
+              <span>Brand &amp; Operations Manager</span>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
     </div>
   </section>
 

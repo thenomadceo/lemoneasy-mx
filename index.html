@@ -283,6 +283,31 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
   .apply-aside{position:sticky;top:104px;}
 }
 
+
+/* Team + Instagram */
+.team-grid{display:grid;gap:28px;list-style:none;margin:28px 0 0;padding:0;}
+.team-card{margin:0;}
+.team-card img,.team-mono{width:100%;height:auto;aspect-ratio:4 / 5;object-fit:cover;object-position:50% 18%;border-radius:2px;background:#ece9de;}
+.team-mono{display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-stretch:72%;font-weight:800;font-size:clamp(40px,8vw,64px);letter-spacing:.04em;color:var(--ink);background:linear-gradient(180deg,#fffef6 0%,#f3f0e4 100%);border:1px solid var(--line-l);}
+.team-card figcaption{margin-top:14px;padding-left:14px;border-left:2px solid var(--ink);max-width:none;}
+.team-card strong{display:block;font-family:var(--sans);font-stretch:80%;font-weight:800;font-size:1.15rem;line-height:1.2;color:var(--ink);}
+.team-card span{display:block;margin-top:4px;font-family:var(--mono);font-size:12.5px;line-height:1.45;letter-spacing:.04em;color:var(--mut-l);}
+.ig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;list-style:none;margin:0;padding:0;}
+.ig-grid a{display:block;border-radius:2px;overflow:hidden;background:#1a1a14;}
+.ig-grid img{width:100%;height:auto;aspect-ratio:1 / 1;object-fit:cover;transition:transform .35s ease,opacity .2s ease;}
+.ig-grid a:hover img{transform:scale(1.04);opacity:.92;}
+.ig-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:22px;font-family:var(--sans);font-weight:700;color:var(--cream);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:2px;text-underline-offset:6px;}
+.ig-link:hover{text-decoration-color:var(--cream);}
+.team .display,.instagram .display{max-width:22ch;}
+.instagram .body{margin-top:16px;}
+@media (min-width:700px){
+  .team-grid{grid-template-columns:repeat(3,1fr);gap:24px;}
+  .ig-grid{grid-template-columns:repeat(3,1fr);gap:12px;}
+}
+@media (min-width:980px){
+  .ig-grid{grid-template-columns:repeat(6,1fr);gap:12px;}
+}
+
 /* Footer */
 .site-foot{border-top:1px solid var(--line);padding:30px 0 34px;}
 .site-foot .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:18px 24px;}
@@ -381,6 +406,63 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
         <figcaption>El herramental se fabrica y se mantiene en casa.</figcaption>
       </figure>
     </div>
+  </div>
+</section>
+
+
+<!-- Equipo -->
+<section class="team on-light" aria-labelledby="team-t">
+  <div class="wrap">
+    <p class="eyebrow">El equipo</p>
+    <h2 id="team-t" class="display">Las personas detrás de una marca alemana de verdad.</h2>
+    <p class="body">Lemoneasy no es un catálogo anónimo. Hay un taller en Baden-Württemberg y un equipo que responde por lo que vas a vender.</p>
+    <ul class="team-grid">
+      <li>
+        <figure class="team-card">
+          <img src="/img/team/manfred-hoenes.jpg" alt="Manfred Hönes, inventor y fundador de Lemoneasy" width="800" height="1000" loading="lazy">
+          <figcaption>
+            <strong>Manfred Hönes</strong>
+            <span>Inventor y fundador</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="team-card">
+          <img src="/img/team/daniel-kuettner.jpg" alt="Daniel Küttner, de Lemoneasy" width="576" height="720" loading="lazy">
+          <figcaption>
+            <strong>Daniel Küttner</strong>
+            <span>LEMONEASY</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure class="team-card">
+          <div class="team-mono" aria-hidden="true">NG</div>
+          <figcaption>
+            <strong>Natalie Geiger</strong>
+            <span>Brand &amp; Operations Manager</span>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="instagram" aria-labelledby="ig-t">
+  <div class="wrap">
+    <p class="eyebrow">Instagram</p>
+    <h2 id="ig-t" class="display">@lemoneasy.official</h2>
+    <p class="body">Los mismos contenidos que ves en la marca. Una empresa alemana que se muestra con nombre y con trabajo publicado.</p>
+    <ul class="ig-grid">
+      <li><a href="https://www.instagram.com/p/DfmG_WkkZuW/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-01.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+      <li><a href="https://www.instagram.com/p/DfjBqM8PakZ/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-02.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+      <li><a href="https://www.instagram.com/p/DfeYot5CW7D/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-03.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+      <li><a href="https://www.instagram.com/p/DfZPEC3Abho/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-04.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+      <li><a href="https://www.instagram.com/p/DfUE2dtiise/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-05.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+      <li><a href="https://www.instagram.com/p/DfEop6sAecO/" target="_blank" rel="nofollow noopener"><img src="/img/instagram/ig-06.jpg" alt="Publicación de @lemoneasy.official" width="800" height="800" loading="lazy"></a></li>
+    </ul>
+    <a class="ig-link" href="https://www.instagram.com/lemoneasy.official/" target="_blank" rel="nofollow noopener">Ver el perfil de Instagram <span aria-hidden="true">-&gt;</span></a>
   </div>
 </section>
 
