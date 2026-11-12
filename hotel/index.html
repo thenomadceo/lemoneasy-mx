@@ -485,6 +485,9 @@
   .site-footer .wrap { display: flex; flex-direction: column; gap: 18px; align-items: flex-start; }
   .site-footer .foot-logo { background: var(--paper); border-radius: 14px; padding: 8px 12px; }
   .site-footer .foot-logo img { height: 44px; width: auto; }
+  .site-footer .legal { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.88rem; }
+  .site-footer .legal a { color: var(--grey-on-dark); text-decoration: underline; text-underline-offset: 3px; }
+  .site-footer .legal a:hover { color: var(--white); }
 
   /* Tablet */
   @media (min-width: 640px) {
@@ -916,6 +919,10 @@
   <div class="wrap">
     <span class="foot-logo"><img src="img/logo.png" alt="LEMONEASY" width="400" height="282" loading="lazy"></span>
     <p>LEMONEASY, 100% made in Germany, 100% menschlich.</p>
+    <nav class="legal" aria-label="Rechtliches">
+      <a href="https://lemoneasy.de/policies/legal-notice" target="_blank" rel="noopener">Impressum</a>
+      <a href="https://lemoneasy.de/policies/privacy-policy" target="_blank" rel="noopener">Datenschutz</a>
+    </nav>
   </div>
 </footer>
 
