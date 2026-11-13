@@ -236,6 +236,8 @@ figure.maker-portrait img{aspect-ratio:4/5;object-fit:cover;object-position:50% 
 .reviews{display:grid;gap:18px;}
 .reviews blockquote{background:var(--ink-2);border:1px solid var(--line);border-top:3px solid var(--yellow);padding:26px 24px 22px;display:flex;flex-direction:column;gap:20px;border-radius:2px;}
 .reviews blockquote p{font-size:19px;line-height:1.45;color:var(--cream);font-weight:500;}
+.reviews .review-quote{display:flex;flex-direction:column;gap:10px;}
+.reviews .review-orig{font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--mut-d);font-weight:400;}
 .reviews footer{margin-top:auto;font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--mut-d);}
 .reviews footer b{display:block;color:var(--cream);font-weight:500;font-size:13px;}
 @media (min-width:900px){.reviews{grid-template-columns:repeat(3,1fr);}}
@@ -527,17 +529,9 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
       <p class="body" style="color:var(--mut-l)">La compra es directa al fabricante en Alemania. Tú o tu comercializadora importan a México. Para una importación formal se necesita estar en el Padrón de Importadores. Te podemos conectar con un agente aduanal.</p>
     </div>
     <div>
-      <div class="price">
-        <div class="tag">Rango indicativo, sujeto a confirmación de LemonEasy</div>
-        <div class="figs" aria-hidden="true">
-          <div class="fig"><strong>20 €</strong><span>Por pieza, paquete de prueba</span></div>
-          <div class="to">-&gt;</div>
-          <div class="fig"><strong>16 €</strong><span>Por pieza, paquete de importador</span></div>
-        </div>
-        <p>Rango indicativo, sujeto a confirmación de LemonEasy: de 20 euros por pieza en el paquete de prueba hasta 16 euros en el de importador.</p>
-      </div>
+      <p class="body">Las condiciones y el precio por volumen se confirman en la llamada con Luis.</p>
       <ul class="buy-list">
-        <li>Precios ex fábrica por volumen, desde un paquete de prueba hasta tarima completa. En la tarima mixta, el precio por pieza es el mismo para el modelo Classic y el Plus.</li>
+        <li>Compra ex fábrica, desde un paquete de prueba hasta tarima completa. En la tarima mixta, el modelo Classic y el Plus pueden ir juntos.</li>
         <li>Envío marítimo de Hamburgo a Veracruz: 4 a 6 semanas.</li>
         <li>El flete, el IVA, el agente aduanal y el honorario de lanzamiento se confirman en la llamada.</li>
         <li>Pagas directamente a LemonEasy en Alemania.</li>
@@ -553,19 +547,28 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
       <p class="eyebrow" style="margin-bottom:0"><span class="num">06</span> Ya se vende en Amazon Alemania</p>
       <span class="stars" aria-hidden="true">★★★★★</span>
       <h2 id="amz-t" class="display">4,4 de 5 estrellas, 64 valoraciones.</h2>
-      <p class="source">Fuente: LEMONEASY en Amazon.de (<a href="https://www.amazon.de/dp/B0C8SNPQ52" target="_blank" rel="noopener noreferrer">https://www.amazon.de/dp/B0C8SNPQ52</a>), consultado el 10 de noviembre de 2026. Las citas van en el idioma original, sin traducir.</p>
+      <p class="source">Fuente: LEMONEASY en Amazon.de (<a href="https://www.amazon.de/dp/B0C8SNPQ52" target="_blank" rel="noopener noreferrer">https://www.amazon.de/dp/B0C8SNPQ52</a>), consultado el 10 de noviembre de 2026. Reseñas traducidas del alemán; el texto original aparece debajo de cada una.</p>
     </div>
     <div class="reviews">
       <blockquote>
-        <p lang="de">"Ich schreibe nie eine Rezension, aber dieses kleine Teil ist einfach mega!!"</p>
+        <div class="review-quote">
+          <p lang="es">"Nunca escribo reseñas, pero esta cosita ¡es simplemente increíble!"</p>
+          <p class="review-orig" lang="de">Original en alemán: "Ich schreibe nie eine Rezension, aber dieses kleine Teil ist einfach mega!!"</p>
+        </div>
         <footer><b>Leserin</b>20 de mayo de 2026, compra verificada</footer>
       </blockquote>
       <blockquote>
-        <p lang="de">"Der beste Zitronenausquetscher den ich bisher hatte. Ohne Spritzen und wirklich bis an den Schalenrand, funktioniert super."</p>
+        <div class="review-quote">
+          <p lang="es">"El mejor exprimidor de limón que he tenido hasta ahora. Sin salpicar y de verdad hasta el borde de la cáscara, funciona de maravilla."</p>
+          <p class="review-orig" lang="de">Original en alemán: "Der beste Zitronenausquetscher den ich bisher hatte. Ohne Spritzen und wirklich bis an den Schalenrand, funktioniert super."</p>
+        </div>
         <footer><b>Tippel</b>20 de marzo de 2026, compra verificada</footer>
       </blockquote>
       <blockquote>
-        <p lang="de">"Einfach die Zitrone reinlegen und ohne Kraftaufwand schieben, schon hat man den kompletten Saft zur Verfügung."</p>
+        <div class="review-quote">
+          <p lang="es">"Simplemente pones el limón, lo empujas sin esfuerzo y ya tienes todo el jugo a tu disposición."</p>
+          <p class="review-orig" lang="de">Original en alemán: "Einfach die Zitrone reinlegen und ohne Kraftaufwand schieben, schon hat man den kompletten Saft zur Verfügung."</p>
+        </div>
         <footer><b>A. K.</b>5 de marzo de 2025, compra verificada</footer>
       </blockquote>
     </div>
