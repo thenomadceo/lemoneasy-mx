@@ -394,30 +394,24 @@
 
 
   /* Team */
-  .team-grid { display: grid; grid-template-columns: 1fr; gap: 22px; list-style: none; margin: 0; padding: 0; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    max-width: 680px;
+  }
   .team-card { margin: 0; }
-  .team-card img,
-  .team-mono {
+  .team-card img {
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 5;
     object-fit: cover;
-    object-position: 50% 18%;
+    object-position: 50% 20%;
     border-radius: 22px;
     background: #ece9de;
-  }
-  .team-mono {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-head);
-    font-weight: 700;
-    font-size: clamp(2.4rem, 8vw, 3.4rem);
-    letter-spacing: 0.04em;
-    color: var(--black);
-    background:
-      linear-gradient(180deg, #fffef6 0%, #f3f0e4 100%);
-    border: 1px solid var(--line);
   }
   .team-card figcaption { margin-top: 14px; }
   .team-card strong {
@@ -556,7 +550,7 @@
     .cards { grid-template-columns: repeat(2, 1fr); }
     .photo-pair { grid-template-columns: repeat(2, 1fr); }
     .ig-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .team-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .fields { grid-template-columns: repeat(2, 1fr); }
     .field--full { grid-column: 1 / -1; }
     .form-card { padding: 32px; }
@@ -595,7 +589,7 @@
     .shop-info { grid-template-columns: 1.4fr 1fr; gap: 48px; margin-top: 52px; align-items: start; }
     .reviews { grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .ig-grid { grid-template-columns: repeat(6, 1fr); }
-    .team-grid { gap: 24px; }
+    .team-grid { gap: 28px; }
     .maker-grid { grid-template-columns: 0.8fr 1fr; gap: 80px; }
     .talk-grid { grid-template-columns: 0.85fr 1fr; gap: 72px; }
     .talk-grid .section-head { position: sticky; top: calc(var(--header-h) + 32px); margin-bottom: 0; }
@@ -884,19 +878,10 @@
         </li>
         <li>
           <figure class="team-card">
-            <img src="/img/team/daniel-kuettner.jpg" alt="Daniel Küttner von LEMONEASY" width="576" height="720" loading="lazy">
+            <img src="/img/team/daniel-kuettner.jpg" alt="Daniel Küttner von LEMONEASY" width="800" height="1000" loading="lazy">
             <figcaption>
               <strong>Daniel Küttner</strong>
               <span>LEMONEASY</span>
-            </figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure class="team-card">
-            <div class="team-mono" aria-hidden="true">NG</div>
-            <figcaption>
-              <strong>Natalie Geiger</strong>
-              <span>Brand &amp; Operations Manager</span>
             </figcaption>
           </figure>
         </li>
