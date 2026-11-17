@@ -491,6 +491,10 @@
     border: 2px solid var(--black);
   }
   .preview-note[hidden] { display: none; }
+  .book-next { margin-top: 16px; }
+  .book-next p { margin: 0 0 12px; font-size: 0.95rem; line-height: 1.45; }
+  .book-next[hidden] { display: none; }
+  .fields[hidden] { display: none; }
 
   /* FAQ */
   .faq { max-width: 820px; }
@@ -977,6 +981,10 @@
           <p class="form-error" id="form-error" role="alert" hidden></p>
         </div>
         <p class="preview-note" id="peter-thanks" role="status" tabindex="-1" hidden>Vielen Dank. Ihre Rückrufanfrage ist eingegangen. Peter Dreverhoff ruft Sie zurück.</p>
+        <div class="book-next" id="peter-book" hidden>
+          <p>Lieber gleich einen festen Termin? Wählen Sie eine freie Zeit in Peters Kalender.</p>
+          <a class="btn btn--outline btn--block" id="peter-book-link" href="https://meetings.hubspot.com/peter-dreverhoff" target="_blank" rel="noopener">Termin mit Peter wählen <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
       </form>
     </div>
   </section>
@@ -1034,6 +1042,10 @@
   var thanks = document.getElementById('peter-thanks');
   var fields = document.getElementById('peter-fields');
   var actions = document.getElementById('peter-actions');
+  var book = document.getElementById('peter-book');
+  var bookLink = document.getElementById('peter-book-link');
+  // Peter's HubSpot meetings page (owner 103859326, portal 47765335).
+  var BOOK_URL = 'https://meetings.hubspot.com/peter-dreverhoff';
   var API = 'https://www.founderscale.ceo/api/lp-optin';
   var sending = false;
 
@@ -1217,6 +1229,17 @@
         if (thanks) {
           thanks.hidden = false;
           if (thanks.focus) thanks.focus();
+        }
+        if (book && bookLink) {
+          try {
+            var bq = new URLSearchParams();
+            if (lead.firstName) bq.set('firstName', lead.firstName);
+            if (lead.lastName) bq.set('lastName', lead.lastName);
+            if (lead.email) bq.set('email', lead.email);
+            var bqs = bq.toString();
+            bookLink.href = BOOK_URL + (bqs ? '?' + bqs : '');
+          } catch (err) {}
+          book.hidden = false;
         }
       });
   });
