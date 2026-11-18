@@ -320,6 +320,36 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
   *,*::before,*::after{transition:none!important;animation:none!important;}
 }
 </style>
+<script>
+// CTA A/B test T-01 (Nov 2026): ad B lands with utm_content=cta_muestra (backup ?cta=muestra)
+// and gets the previous sample-unit wording. Without the tag nothing on the page changes.
+(function () {
+  var on = false;
+  try {
+    var q = new URLSearchParams(window.location.search);
+    on = String(q.get('utm_content') || '').toLowerCase() === 'cta_muestra' || String(q.get('cta') || '').toLowerCase() === 'muestra';
+  } catch (e) {}
+  window.LE_CTA_MUESTRA = on;
+  window.leApplyMuestra = function () {
+    if (!on) return;
+    var els = document.querySelectorAll('[data-muestra]');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.getAttribute('data-muestra-done')) continue;
+      var t = el.getAttribute('data-muestra');
+      var node = null;
+      for (var j = el.childNodes.length - 1; j >= 0; j--) {
+        if (el.childNodes[j].nodeType === 3 && el.childNodes[j].nodeValue.trim()) { node = el.childNodes[j]; break; }
+      }
+      if (!node) continue;
+      var lead = /^\s/.test(node.nodeValue) ? ' ' : '';
+      var tail = /\s$/.test(node.nodeValue) ? ' ' : '';
+      node.nodeValue = lead + t + tail;
+      el.setAttribute('data-muestra-done', '1');
+    }
+  };
+})();
+</script>
 </head>
 <body>
 <a class="skip" href="#solicitud">Ir al formulario</a>
@@ -328,7 +358,7 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
   <div class="wrap">
     <a href="/" aria-label="Lemoneasy, inicio"><img src="/us/img/logo.png" alt="Lemoneasy" width="400" height="282"></a>
     <span class="head-meta">Fabricado en Alemania</span>
-    <a class="btn btn-sm" href="#solicitud">Quiero las condiciones</a>
+    <a class="btn btn-sm" href="#solicitud" data-muestra="Solicitar muestra">Quiero las condiciones</a>
   </div>
 </header>
 
@@ -347,9 +377,10 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
       <img class="seal" src="/made-in-germany.png" alt="Sello Made in Germany" width="256" height="256">
     </div>
     <div class="hero-cta">
-      <a class="btn" href="#solicitud">Quiero las condiciones <span class="arr" aria-hidden="true">-&gt;</span></a>
-      <p class="note">Una videollamada de 15 minutos por Google Meet con Luis Uriarte, nuestro comercial en México. Revisamos tu canal, tu volumen y las condiciones mayoristas.</p>
+      <a class="btn" href="#solicitud" data-muestra="Quiero una unidad de muestra en mi bodega">Quiero las condiciones <span class="arr" aria-hidden="true">-&gt;</span></a>
+      <p class="note" data-muestra="Sin costo y sin compromiso de compra. Empieza con una videollamada de 15 minutos por Google Meet: ahí confirmas envío, ficha técnica y precios de mayoreo.">Una videollamada de 15 minutos por Google Meet con Luis Uriarte, nuestro comercial en México. Revisamos tu canal, tu volumen y las condiciones mayoristas.</p>
     </div>
+    <script>window.leApplyMuestra && window.leApplyMuestra();</script>
   </div>
   <div class="specbar">
     <div class="wrap">
@@ -588,7 +619,7 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
       <li><span>En esa llamada revisan tu volumen y las condiciones mayoristas. Si calificas, sigue una llamada de cierre de una hora, en un horario por acordar.</span></li>
       <li><span>Si necesitas ver una unidad física antes de un pedido concreto, se acuerda en la llamada.</span></li>
     </ol>
-    <div class="steps-cta"><a class="btn" href="#solicitud">Quiero las condiciones <span class="arr" aria-hidden="true">-&gt;</span></a></div>
+    <div class="steps-cta"><a class="btn" href="#solicitud" data-muestra="Quiero una unidad de muestra en mi bodega">Quiero las condiciones <span class="arr" aria-hidden="true">-&gt;</span></a></div>
   </div>
 </section>
 
@@ -596,9 +627,9 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
 <section class="apply" id="solicitud" aria-labelledby="form-t">
   <div class="wrap">
     <div class="apply-aside">
-      <p class="eyebrow"><span class="num">08</span> Solicitud de condiciones</p>
-      <h2 id="form-t" class="display">Cuéntanos cómo operas.</h2>
-      <p class="body">No enviamos condiciones a ciegas. Dinos quién eres y dónde vendes. Si tu perfil encaja, el siguiente paso es una videollamada de 15 minutos con Luis Uriarte.</p>
+      <p class="eyebrow" data-muestra="Solicitud de muestra"><span class="num">08</span> Solicitud de condiciones</p>
+      <h2 id="form-t" class="display" data-muestra="Dinos a dónde enviamos tu unidad.">Cuéntanos cómo operas.</h2>
+      <p class="body" data-muestra="No enviamos muestras a ciegas. Cuéntanos quién eres y dónde operas. Si tu perfil encaja, el siguiente paso es una videollamada por Google Meet con nuestro socio comercial en México para coordinar el envío y hablar de volúmenes.">No enviamos condiciones a ciegas. Dinos quién eres y dónde vendes. Si tu perfil encaja, el siguiente paso es una videollamada de 15 minutos con Luis Uriarte.</p>
     </div>
     <div id="form-slot">
       <form class="lead" id="lead-form" method="post" action="https://www.founderscale.ceo/api/lp-optin">
@@ -659,7 +690,7 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
           <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         </div>
         <p class="form-error full" id="form-error" role="alert" hidden></p>
-        <button class="btn full" id="lead-submit" type="submit">Solicitar condiciones</button>
+        <button class="btn full" id="lead-submit" type="submit" data-muestra="Enviar solicitud de muestra">Solicitar condiciones</button>
         <p class="micro full">Usamos tus datos solo para la conversación comercial. Nada de listas de correo.</p>
       </form>
     </div>
@@ -677,6 +708,9 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
 
 <script>
 (function () {
+  if (window.leApplyMuestra) window.leApplyMuestra();
+  var submitLabel = window.LE_CTA_MUESTRA ? 'Enviar solicitud de muestra' : 'Solicitar condiciones';
+
   // Demo video: some browsers drop the muted attribute on autoplay.
   var v = document.getElementById('demo');
   if (v) {
@@ -700,7 +734,7 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
   function setSending(on) {
     sending = on;
     btn.disabled = on;
-    btn.textContent = on ? 'Enviando...' : 'Solicitar condiciones';
+    btn.textContent = on ? 'Enviando...' : submitLabel;
   }
   function readCookie(k) {
     try {
@@ -730,6 +764,8 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
       presupuesto: field('presupuesto'),
       website: field('website')
     };
+    // Variant B of the CTA test, stored on the lead next to utm_content.
+    if (window.LE_CTA_MUESTRA) lead.ctaVariant = 'muestra';
 
     var digits = lead.telefono.replace(/\D/g, '');
     if (digits.length < 10) {
@@ -778,6 +814,7 @@ form.lead .btn[disabled]{opacity:.65;cursor:progress;}
         bodega: lead.bodega,
         presupuesto: lead.presupuesto,
         website: lead.website,
+        ctaVariant: lead.ctaVariant,
         eventId: eventId,
         fbc: fbc,
         fbp: fbp
