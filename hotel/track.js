@@ -6,7 +6,8 @@
      page_view, checkout_click (a package button), cta_click, form_submit.
    Sent only after the visitor accepted the banner (lemoneasy_consent):
      scroll (25, 50, 75, 100), field_focus (field NAME only), page_leave
-     (seconds the page was visible). After consent the visit id is kept in
+     (seconds the page was visible), plus the Microsoft Clarity session
+     recording. After consent the visit id is kept in
      sessionStorage so /hotel/ and /hotel/beratung/ count as one visit.
 
    The page sets its slug on <html data-track-page="...">. */
@@ -65,6 +66,20 @@
 
     send('page_view');
 
+    // Session recording (Microsoft Clarity, the project the other
+    // lemoneasy.shop pages already use). Loaded only after consent.
+    var clarityLoaded = false;
+    function loadClarity() {
+      if (clarityLoaded || !consented()) return;
+      clarityLoaded = true;
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+        t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 'y4jlwestdp');
+    }
+    loadClarity();
+
     // How far the page was read.
     var sentDepth = {};
     function onScroll() {
@@ -84,7 +99,7 @@
 
     // A visitor who accepts mid-visit: keep the id and report where they are.
     var accept = document.getElementById('consent-accept');
-    if (accept) accept.addEventListener('click', function () { setTimeout(function () { persist(); onScroll(); }, 0); });
+    if (accept) accept.addEventListener('click', function () { setTimeout(function () { persist(); onScroll(); loadClarity(); }, 0); });
 
     // Seconds the page was actually visible, each time it is hidden.
     var shownAt = Date.now(), leaves = 0;
